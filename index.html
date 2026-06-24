@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request for Quote — Guardian Metals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #EEF2F7;
+  --surface: #FFFFFF;
+  --header-bg: #0D1B2A;
+  --accent: #E8601C;
+  --accent-dk: #C0511A;
+  --blue: #1A3A5C;
+  --text: #1A2535;
+  --text2: #5A6A7E;
+  --border: #D0DCE8;
+  --border2: #B0C4D8;
+  --weight-bg: #FEF3ED;
+  --weight-txt: #C0511A;
+  --green: #15803D;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(13,27,42,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+
+/* ── HEADER ── */
+header {
+  background: var(--header-bg);
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 28px, rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px),
+    repeating-linear-gradient(-45deg, transparent, transparent 28px, rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px);
+  padding: 32px 24px 28px;
+  border-bottom: 3px solid var(--accent);
+}
+.header-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.logo { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; }
+.logo-name { font-size: 2.2rem; font-weight: 800; color: #fff; letter-spacing: 0.04em; line-height: 1; }
+.logo-name span { color: var(--accent); }
+.logo-sub { font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; }
+.header-right { text-align: right; }
+.rfq-badge { display: inline-block; background: var(--accent); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 14px; border-radius: 4px; }
+.header-tagline { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 6px; letter-spacing: 0.06em; }
+
+/* ── WEIGHT TICKER ── */
+#ticker {
+  background: var(--blue); color: #fff;
+  padding: 8px 24px; text-align: center;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.08em;
+  position: sticky; top: 0; z-index: 100;
+  transition: background 0.3s;
+}
+#ticker span { color: var(--accent); }
+#ticker.has-weight { background: #122B44; }
+
+/* ── LAYOUT ── */
+main { max-width: 960px; margin: 32px auto 60px; padding: 0 16px; display: flex; flex-direction: column; gap: 24px; }
+
+/* ── STEP CARD ── */
+.step-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.step-head { background: var(--blue); padding: 14px 24px; display: flex; align-items: center; gap: 14px; }
+.step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; white-space: nowrap; }
+.step-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.35rem; font-weight: 700; color: #fff; letter-spacing: 0.04em; }
+.step-body { padding: 24px; }
+
+/* ── FORM GRID ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.span-2 { grid-column: span 2; }
+label { display: flex; flex-direction: column; gap: 5px; font-size: 0.72rem; font-weight: 600; color: var(--text2); letter-spacing: 0.07em; text-transform: uppercase; }
+input, select, textarea {
+  font-family: 'Inter', sans-serif; font-size: 0.88rem; color: var(--text);
+  border: 1.5px solid var(--border); border-radius: 6px; padding: 9px 11px;
+  background: #fff; outline: none; width: 100%; transition: border-color 0.15s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+input::placeholder, textarea::placeholder { color: #AABBCC; }
+textarea { resize: vertical; min-height: 60px; }
+.req { color: var(--accent); }
+
+/* ── LINE ITEMS ── */
+#line-items { display: flex; flex-direction: column; gap: 16px; }
+.item-card { border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; transition: border-color 0.2s; }
+.item-card:focus-within { border-color: var(--accent); }
+.item-head { background: var(--bg); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+.item-label { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--blue); letter-spacing: 0.06em; }
+.item-label em { color: var(--accent); font-style: normal; }
+.btn-remove { background: none; border: 1.5px solid var(--border2); color: var(--text2); border-radius: 5px; padding: 3px 10px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all 0.15s; }
+.btn-remove:hover { border-color: #E05050; color: #E05050; background: #FFF0F0; }
+.item-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.dims-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.dim-field { display: flex; flex-direction: column; gap: 5px; min-width: 90px; flex: 1; }
+.dim-unit { font-size: 0.65rem; color: var(--text2); font-weight: 500; }
+.item-bottom { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.item-bottom > label { flex: 1; min-width: 100px; }
+.weight-pill {
+  background: var(--weight-bg); border: 1.5px solid #F0C8A8; border-radius: 20px;
+  padding: 6px 14px; white-space: nowrap; align-self: flex-end;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700;
+  color: var(--weight-txt); letter-spacing: 0.04em; min-width: 110px; text-align: center;
+}
+
+/* ── ADD ITEM BUTTON ── */
+.btn-add { display: flex; align-items: center; gap: 8px; background: none; border: 2px dashed var(--border2); color: var(--blue); border-radius: 8px; padding: 12px 20px; cursor: pointer; font-weight: 600; font-size: 0.9rem; width: 100%; justify-content: center; transition: all 0.15s; margin-top: 4px; }
+.btn-add:hover { border-color: var(--accent); color: var(--accent); background: var(--weight-bg); }
+.btn-add svg { flex-shrink: 0; }
+
+/* ── DELIVERY ── */
+.radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+.radio-opt { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.88rem; font-weight: 500; color: var(--text); padding: 9px 16px; border: 1.5px solid var(--border); border-radius: 6px; transition: all 0.15s; user-select: none; }
+.radio-opt:has(input:checked) { border-color: var(--accent); background: var(--weight-bg); color: var(--accent); }
+.radio-opt input[type=radio] { accent-color: var(--accent); }
+.check-group { display: flex; flex-direction: column; gap: 8px; }
+.check-opt { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.88rem; font-weight: 500; color: var(--text); }
+.check-opt input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ── REVIEW TABLE ── */
+#review-area { overflow-x: auto; }
+.review-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 16px; }
+.review-table th { background: var(--blue); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 9px 12px; text-align: left; white-space: nowrap; }
+.review-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.review-table tr:hover td { background: #F8FAFC; }
+.review-table .line-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--accent); font-size: 1rem; }
+.review-table tfoot td { font-weight: 600; background: #F0F4F7; border-top: 2px solid var(--border2); font-size: 0.85rem; }
+.review-table .wt-cell { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--weight-txt); font-size: 0.95rem; }
+.total-row td { background: var(--blue) !important; color: #fff !important; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; }
+.total-row .wt-cell { color: var(--accent) !important; font-size: 1.1rem; }
+.review-meta { font-size: 0.82rem; color: var(--text2); margin-bottom: 20px; line-height: 1.8; }
+.review-meta strong { color: var(--text); }
+.review-empty { color: var(--text2); font-style: italic; padding: 16px 0; }
+
+/* ── ACTIONS ── */
+.action-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.btn-primary { background: var(--accent); color: #fff; border: none; border-radius: 7px; padding: 13px 28px; font-weight: 600; font-size: 0.95rem; cursor: pointer; letter-spacing: 0.03em; transition: background 0.15s; display: flex; align-items: center; gap: 8px; }
+.btn-primary:hover { background: var(--accent-dk); }
+.btn-secondary { background: none; color: var(--blue); border: 2px solid var(--blue); border-radius: 7px; padding: 11px 22px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.15s; }
+.btn-secondary:hover { background: var(--blue); color: #fff; }
+.btn-refresh { background: none; color: var(--text2); border: 1.5px solid var(--border2); border-radius: 7px; padding: 11px 18px; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.btn-refresh:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ── SUCCESS BANNER ── */
+#success { display: none; background: #F0FFF4; border: 2px solid var(--green); border-radius: var(--radius); padding: 20px 24px; margin-top: 8px; }
+#success h3 { color: var(--green); font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 6px; }
+#success p { color: #166534; font-size: 0.88rem; }
+
+/* ── FOOTER ── */
+footer { text-align: center; padding: 24px; color: var(--text2); font-size: 0.75rem; }
+footer a { color: var(--accent); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .span-2 { grid-column: span 1; }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .header-right { text-align: left; }
+  .item-bottom { flex-direction: column; }
+  .dims-row { flex-direction: column; }
+  .dim-field { min-width: unset; }
+  .radio-group { flex-direction: column; }
+}
+@media print {
+  header, #ticker, .step-head, .btn-add, .btn-remove, .action-row, footer { display: none !important; }
+  .step-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-name">GUARDIAN <span>METALS</span></div>
+      <div class="logo-sub">Steel Service Center &nbsp;·&nbsp; Galt, California</div>
+    </div>
+    <div class="header-right">
+      <div class="rfq-badge">Request for Quote</div>
+      <div class="header-tagline">Pricing returned in minutes — no install required</div>
+    </div>
+  </div>
+</header>
+
+<div id="ticker">
+  Total estimated weight: <span id="total-weight">—</span>
+</div>
+
+<main>
+
+  <!-- ── STEP 1: CONTACT ── -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">Step 01</div>
+      <div class="step-title">Your Information</div>
+    </div>
+    <div class="step-body">
+      <div class="grid-2">
+        <label>Company Name <span class="req">*</span><input id="c-company" type="text" placeholder="Acme Fabricators, Inc."></label>
+        <label>Contact Name <span class="req">*</span><input id="c-name" type="text" placeholder="Jane Smith"></label>
+        <label>Email <span class="req">*</span><input id="c-email" type="email" placeholder="jane@acmefab.com"></label>
+        <label>Phone<input id="c-phone" type="tel" placeholder="(916) 555-0100"></label>
+        <label>Delivery ZIP<input id="c-zip" type="text" placeholder="95632" maxlength="10"></label>
+        <label>PO / Project Ref.<input id="c-po" type="text" placeholder="PO-2025-084 or Project Alpha"></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: LINE ITEMS ── -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">Step 02</div>
+      <div class="step-title">Material Requirements</div>
+    </div>
+    <div class="step-body">
+      <div id="line-items"></div>
+      <button class="btn-add" onclick="addItem()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Line Item
+      </button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: DELIVERY ── -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">Step 03</div>
+      <div class="step-title">Delivery &amp; Requirements</div>
+    </div>
+    <div class="step-body" style="display:flex;flex-direction:column;gap:20px;">
+      <div>
+        <label style="margin-bottom:10px;">Fulfillment Method</label>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="delivery" value="Will Call (Customer Pickup)" checked> Will Call / Pickup</label>
+          <label class="radio-opt"><input type="radio" name="delivery" value="Guardian Delivery"> Guardian Delivery</label>
+          <label class="radio-opt"><input type="radio" name="delivery" value="Third-Party Carrier"> Third-Party Carrier</label>
+        </div>
+      </div>
+      <div class="grid-2">
+        <label>Requested By Date<input id="d-date" type="date"></label>
+        <label>Delivery Address / Notes<input id="d-addr" type="text" placeholder="Same as billing, or enter address…"></label>
+      </div>
+      <div>
+        <label style="margin-bottom:10px;">Special Requirements</label>
+        <div class="check-group">
+          <label class="check-opt"><input type="checkbox" id="req-cmtr"> Certified Mill Test Reports (CMTR / MTR)</label>
+          <label class="check-opt"><input type="checkbox" id="req-3pi"> Third-Party Inspection</label>
+          <label class="check-opt"><input type="checkbox" id="req-pkg"> Special Packaging</label>
+          <label class="check-opt"><input type="checkbox" id="req-kit"> Kitting / Bundling</label>
+          <label class="check-opt"><input type="checkbox" id="req-cad"> CAD / Custom Fabrication Drawing Required</label>
+        </div>
+      </div>
+      <label>Additional Notes / Instructions
+        <textarea id="d-notes" placeholder="Any special instructions, tolerances, finish specs, or delivery constraints…"></textarea>
+      </label>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: REVIEW ── -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">Step 04</div>
+      <div class="step-title">Review &amp; Submit</div>
+    </div>
+    <div class="step-body">
+      <p style="font-size:0.85rem;color:var(--text2);margin-bottom:16px;">Verify your requirements below, then click <strong>Submit RFQ</strong> to open your email client with a pre-filled quote request. Guardian Metals will respond within minutes during business hours.</p>
+      <button class="btn-refresh" onclick="buildReview()" style="margin-bottom:20px;">↻ Refresh Summary</button>
+      <div id="review-area"><p class="review-empty">Click "Refresh Summary" to preview your RFQ before sending.</p></div>
+      <div class="action-row">
+        <button class="btn-primary" onclick="submitRFQ()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Submit RFQ to Guardian Metals
+        </button>
+        <button class="btn-secondary" onclick="copyRFQ()">Copy RFQ Text</button>
+        <button class="btn-refresh" onclick="window.print()">Print / Save PDF</button>
+      </div>
+      <div id="success">
+        <h3>✓ Your email client has opened!</h3>
+        <p>A pre-filled message addressed to <strong>sales@guardian-metals.com</strong> is ready to send. Add any attachments (drawings, specs) before hitting Send.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <strong>Guardian Metals, LLC</strong> &nbsp;·&nbsp; Galt, California &nbsp;·&nbsp; <a href="tel:2097452529">(209) 745-2529</a> &nbsp;·&nbsp; <a href="mailto:sales@guardian-metals.com">sales@guardian-metals.com</a><br>
+  <span style="margin-top:4px;display:block;">This RFQ form is for quoting purposes only. All pricing is subject to final confirmation by Guardian Metals.</span>
+</footer>
+
+<script>
+// ── SHAPE CATALOG ──────────────────────────────────────────────────
+const SHAPES = {
+  'sheet': {
+    label: 'Sheet / Plate',
+    grades: ['A36','A572-50','A514 (T-1)','HR P&O','CR 1008','CR Full Hard','Galvanized G90','Galvanized G60','Galvalume AZ55','304 Stainless 2B','316 Stainless 2B','5052-H32 Aluminum','6061-T6 Aluminum'],
+    dims: [
+      { id:'t', label:'Thickness', ph:'0.25', unit:'in' },
+      { id:'w', label:'Width', ph:'48', unit:'in' },
+      { id:'l', label:'Length', ph:'120', unit:'in' }
+    ],
+    weight: (d,q) => d.t && d.w && d.l ? d.t * d.w * d.l * 0.2836 * q : null
+  },
+  'flat-bar': {
+    label: 'Flat Bar',
+    grades: ['A36','A572-50','1018 CF','304 Stainless','316 Stainless'],
+    dims: [
+      { id:'t', label:'Thickness', ph:'0.25', unit:'in' },
+      { id:'w', label:'Width', ph:'3', unit:'in' },
+      { id:'l', label:'Length', ph:'240', unit:'in' }
+    ],
+    weight: (d,q) => d.t && d.w && d.l ? d.t * d.w * d.l * 0.2836 * q : null
+  },
+  'round-bar': {
+    label: 'Round Bar',
+    grades: ['A36','1018 CF','1045','4140 Annealed','4140 P&T','303 Stainless','304 Stainless','316 Stainless','2024 Aluminum','6061-T6 Aluminum'],
+    dims: [
+      { id:'d', label:'Diameter', ph:'1.0', unit:'in' },
+      { id:'l', label:'Length', ph:'144', unit:'in' }
+    ],
+    weight: (d,q) => d.d && d.l ? (Math.PI/4) * d.d*d.d * d.l * 0.2836 * q : null
+  },
+  'square-bar': {
+    label: 'Square Bar',
+    grades: ['A36','1018 CF','304 Stainless'],
+    dims: [
+      { id:'s', label:'Size', ph:'1.0', unit:'in' },
+      { id:'l', label:'Length', ph:'144', unit:'in' }
+    ],
+    weight: (d,q) => d.s && d.l ? d.s*d.s * d.l * 0.2836 * q : null
+  },
+  'hex-bar': {
+    label: 'Hex Bar',
+    grades: ['1018 CF','1045','12L14 Free Mach.','303 Stainless','304 Stainless'],
+    dims: [
+      { id:'af', label:'Across Flats', ph:'1.0', unit:'in' },
+      { id:'l', label:'Length', ph:'144', unit:'in' }
+    ],
+    weight: (d,q) => d.af && d.l ? (Math.sqrt(3)/2) * d.af*d.af * d.l * 0.2836 * q : null
+  },
+  'angle': {
+    label: 'Angle',
+    grades: ['A36','A572-50','304 Stainless'],
+    dims: [
+      { id:'l1', label:'Leg 1', ph:'3', unit:'in' },
+      { id:'l2', label:'Leg 2', ph:'3', unit:'in' },
+      { id:'t', label:'Thickness', ph:'0.25', unit:'in' },
+      { id:'len', label:'Length', ph:'240', unit:'in' }
+    ],
+    weight: (d,q) => d.l1&&d.l2&&d.t&&d.len ? (d.l1+d.l2-d.t)*d.t*d.len*0.2836*q : null
+  },
+  'channel': {
+    label: 'Channel (C / MC)',
+    grades: ['A36','A572-50','304 Stainless'],
+    dims: [
+      { id:'h', label:'Height', ph:'4', unit:'in' },
+      { id:'fw', label:'Flange W.', ph:'1.58', unit:'in' },
+      { id:'wt', label:'Web Thk.', ph:'0.184', unit:'in' },
+      { id:'ft', label:'Flange Thk.', ph:'0.296', unit:'in' },
+      { id:'len', label:'Length', ph:'240', unit:'in' }
+    ],
+    weight: (d,q) => d.h&&d.fw&&d.wt&&d.ft&&d.len
+      ? ((d.h-2*d.ft)*d.wt + 2*d.fw*d.ft)*d.len*0.2836*q : null
+  },
+  'wide-flange': {
+    label: 'Wide Flange / I-Beam',
+    grades: ['A36','A572-50','A992'],
+    dims: [
+      { id:'h', label:'Height', ph:'8', unit:'in' },
+      { id:'fw', label:'Flange W.', ph:'8', unit:'in' },
+      { id:'wt', label:'Web Thk.', ph:'0.40', unit:'in' },
+      { id:'ft', label:'Flange Thk.', ph:'0.56', unit:'in' },
+      { id:'len', label:'Length', ph:'480', unit:'in' }
+    ],
+    weight: (d,q) => d.h&&d.fw&&d.wt&&d.ft&&d.len
+      ? ((d.h-2*d.ft)*d.wt + 2*d.fw*d.ft)*d.len*0.2836*q : null
+  },
+  'round-hss': {
+    label: 'Round Tube / HSS',
+    grades: ['A500 Gr B','A513 DOM','A554','304 Stainless','316 Stainless'],
+    dims: [
+      { id:'od', label:'OD', ph:'2.0', unit:'in' },
+      { id:'wall', label:'Wall', ph:'0.120', unit:'in' },
+      { id:'len', label:'Length', ph:'240', unit:'in' }
+    ],
+    weight: (d,q) => d.od&&d.wall&&d.len
+      ? (Math.PI/4)*((d.od*d.od)-(d.od-2*d.wall)*(d.od-2*d.wall))*d.len*0.2836*q : null
+  },
+  'square-hss': {
+    label: 'Square Tube / HSS',
+    grades: ['A500 Gr B','A513'],
+    dims: [
+      { id:'s', label:'Size', ph:'2.0', unit:'in' },
+      { id:'wall', label:'Wall', ph:'0.120', unit:'in' },
+      { id:'len', label:'Length', ph:'240', unit:'in' }
+    ],
+    weight: (d,q) => d.s&&d.wall&&d.len
+      ? ((d.s*d.s)-((d.s-2*d.wall)*(d.s-2*d.wall)))*d.len*0.2836*q : null
+  },
+  'rect-hss': {
+    label: 'Rect. Tube / HSS',
+    grades: ['A500 Gr B','A513'],
+    dims: [
+      { id:'h', label:'Height', ph:'3', unit:'in' },
+      { id:'w', label:'Width', ph:'2', unit:'in' },
+      { id:'wall', label:'Wall', ph:'0.120', unit:'in' },
+      { id:'len', label:'Length', ph:'240', unit:'in' }
+    ],
+    weight: (d,q) => d.h&&d.w&&d.wall&&d.len
+      ? (d.h*d.w-(d.h-2*d.wall)*(d.w-2*d.wall))*d.len*0.2836*q : null
+  },
+  'pipe': {
+    label: 'Pipe',
+    grades: ['A53 Gr B ERW','A53 Gr B Seamless','A106 Gr B','A312 TP304','A312 TP316'],
+    dims: [
+      { id:'nps', label:'NPS (in)', ph:'2', unit:'' },
+      { id:'sch', label:'Schedule', ph:'40', unit:'' },
+      { id:'len', label:'Length', ph:'240', unit:'in' }
+    ],
+    weight: null
+  },
+  'custom': {
+    label: 'Custom / Other',
+    grades: [],
+    dims: [{ id:'desc', label:'Describe the material / form', ph:'e.g. 1/4" × 2" flat bar laser cut to profile…', unit:'' }],
+    weight: null
+  }
+};
+
+// ── STATE ──────────────────────────────────────────────────────────
+let itemCount = 0;
+
+// ── RENDER A LINE ITEM ─────────────────────────────────────────────
+function addItem() {
+  itemCount++;
+  const id = itemCount;
+  const container = document.getElementById('line-items');
+  const card = document.createElement('div');
+  card.className = 'item-card';
+  card.id = `item-${id}`;
+  card.innerHTML = `
+    <div class="item-head">
+      <div class="item-label">LINE <em>${id}</em></div>
+      <button class="btn-remove" onclick="removeItem(${id})">Remove</button>
+    </div>
+    <div class="item-body">
+      <div class="grid-2">
+        <label>Shape / Form <span class="req">*</span>
+          <select id="shape-${id}" onchange="onShapeChange(${id})">
+            <option value="">— Select shape —</option>
+            ${Object.entries(SHAPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}
+          </select>
+        </label>
+        <label>Grade / Specification
+          <select id="grade-${id}"><option value="">— Select shape first —</option></select>
+        </label>
+      </div>
+      <div class="dims-row" id="dims-${id}"></div>
+      <div class="item-bottom">
+        <label>Quantity <span class="req">*</span>
+          <input type="number" id="qty-${id}" min="1" placeholder="1" oninput="calcWeight(${id})">
+        </label>
+        <label>Unit
+          <select id="unit-${id}">
+            <option value="pcs">Pieces</option>
+            <option value="ft">Feet</option>
+            <option value="lbs">Pounds</option>
+          </select>
+        </label>
+        <label>Cut Type
+          <select id="cut-${id}">
+            <option value="Mill / Stock Length">Mill / Stock Length</option>
+            <option value="Cut-to-Length (Exact)">Cut-to-Length (Exact)</option>
+            <option value="Cut ±1/8&quot;">Cut ±1/8"</option>
+            <option value="Random Length">Random Length</option>
+          </select>
+        </label>
+        <label>Processing
+          <select id="proc-${id}">
+            <option value="None">None / Mill Standard</option>
+            <option value="Shear Cut">Shear Cut</option>
+            <option value="Plasma Cut">Plasma Cut</option>
+            <option value="Saw Cut">Saw Cut</option>
+            <option value="Bending / Forming">Bending / Forming</option>
+            <option value="Drilling / Punching">Drilling / Punching</option>
+            <option value="Kitting / Bundling">Kitting / Bundling</option>
+            <option value="CAD Fabrication">CAD Fabrication</option>
+          </select>
+        </label>
+        <div class="weight-pill" id="wt-${id}">~ — lbs</div>
+      </div>
+      <label>Line Notes
+        <textarea id="notes-${id}" placeholder="Special tolerances, finish, quantity breaks, reference drawing…"></textarea>
+      </label>
+    </div>
+  `;
+  container.appendChild(card);
+  // Scroll to new card
+  setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+
+function removeItem(id) {
+  const card = document.getElementById(`item-${id}`);
+  if (card) card.remove();
+  updateTicker();
+}
+
+// ── SHAPE CHANGE → UPDATE GRADE + DIMS ────────────────────────────
+function onShapeChange(id) {
+  const shapeKey = document.getElementById(`shape-${id}`).value;
+  const gradeEl = document.getElementById(`grade-${id}`);
+  const dimsEl  = document.getElementById(`dims-${id}`);
+  const shape   = SHAPES[shapeKey];
+
+  // Grades
+  gradeEl.innerHTML = shape
+    ? ['<option value="">— Select grade —</option>',
+       ...shape.grades.map(g=>`<option value="${g}">${g}</option>`)].join('')
+    : '<option value="">— Select shape first —</option>';
+
+  // Dimension fields
+  dimsEl.innerHTML = '';
+  if (shape && shape.dims.length) {
+    shape.dims.forEach(dim => {
+      const wrap = document.createElement('div');
+      wrap.className = 'dim-field';
+      const isLong = dim.label.length > 12;
+      wrap.innerHTML = `
+        <label style="text-transform:uppercase;font-size:0.7rem;font-weight:600;color:var(--text2);gap:4px;">
+          ${dim.label}${dim.unit ? ` <span class="dim-unit">(${dim.unit})</span>` : ''}
+          <input type="number" step="any" min="0" id="dim-${id}-${dim.id}"
+            placeholder="${dim.ph}" oninput="calcWeight(${id})"
+            style="${isLong ? 'min-width:160px;' : ''}">
+        </label>`;
+      dimsEl.appendChild(wrap);
+    });
+  }
+
+  calcWeight(id);
+}
+
+// ── WEIGHT CALCULATOR ──────────────────────────────────────────────
+function calcWeight(id) {
+  const shapeKey = document.getElementById(`shape-${id}`)?.value;
+  const qty      = parseFloat(document.getElementById(`qty-${id}`)?.value) || 1;
+  const pill     = document.getElementById(`wt-${id}`);
+  if (!pill) return;
+
+  const shape = SHAPES[shapeKey];
+  if (!shape || !shape.weight) { pill.textContent = '~ — lbs'; updateTicker(); return; }
+
+  // Collect dim values
+  const d = {};
+  shape.dims.forEach(dim => {
+    const el = document.getElementById(`dim-${id}-${dim.id}`);
+    if (el) d[dim.id] = parseFloat(el.value) || 0;
+  });
+
+  const lbs = shape.weight(d, qty);
+  if (lbs === null || isNaN(lbs) || lbs <= 0) {
+    pill.textContent = '~ — lbs';
+  } else {
+    pill.textContent = `~ ${fmt(lbs)} lbs`;
+  }
+  updateTicker();
+}
+
+// ── TOTAL WEIGHT TICKER ────────────────────────────────────────────
+function updateTicker() {
+  let total = 0;
+  let anyWeight = false;
+  document.querySelectorAll('[id^="wt-"]').forEach(el => {
+    const txt = el.textContent.replace(/[^0-9.]/g,'');
+    const n   = parseFloat(txt);
+    if (!isNaN(n) && n > 0) { total += n; anyWeight = true; }
+  });
+  const ticker = document.getElementById('ticker');
+  const span   = document.getElementById('total-weight');
+  if (anyWeight) {
+    span.textContent = `${fmt(total)} lbs`;
+    ticker.classList.add('has-weight');
+  } else {
+    span.textContent = '—';
+    ticker.classList.remove('has-weight');
+  }
+}
+
+// ── BUILD REVIEW ───────────────────────────────────────────────────
+function buildReview() {
+  const area = document.getElementById('review-area');
+  const items = collectItems();
+  if (!items.length) {
+    area.innerHTML = '<p class="review-empty">No line items added yet. Fill in Step 02 and refresh.</p>';
+    return;
+  }
+
+  // Contact block
+  const co    = document.getElementById('c-company').value || '—';
+  const cname = document.getElementById('c-name').value    || '—';
+  const email = document.getElementById('c-email').value   || '—';
+  const phone = document.getElementById('c-phone').value   || '—';
+  const zip   = document.getElementById('c-zip').value     || '—';
+  const po    = document.getElementById('c-po').value      || '—';
+  const dateEl= document.getElementById('d-date').value;
+  const ddate = dateEl ? new Date(dateEl+'T00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—';
+  const deliv = document.querySelector('input[name="delivery"]:checked')?.value || '—';
+  const addr  = document.getElementById('d-addr').value    || '—';
+  const reqs  = collectReqs();
+  const dnotes= document.getElementById('d-notes').value   || '';
+
+  let totalLbs = 0;
+  const rows = items.map((it, i) => {
+    if (it.lbs) totalLbs += it.lbs;
+    return `<tr>
+      <td class="line-n">${i+1}</td>
+      <td><strong>${it.shape}</strong>${it.grade ? '<br><span style="color:var(--text2);font-size:0.78rem;">'+it.grade+'</span>' : ''}</td>
+      <td style="font-size:0.8rem;">${it.dimsStr}</td>
+      <td>${it.qty} ${it.unit}</td>
+      <td>${it.cut}</td>
+      <td class="wt-cell">${it.lbs ? fmt(it.lbs)+' lbs' : '—'}</td>
+      <td>${it.proc}</td>
+      <td style="font-size:0.78rem;color:var(--text2);">${it.notes || '—'}</td>
+    </tr>`;
+  }).join('');
+
+  area.innerHTML = `
+    <div class="review-meta">
+      <strong>Company:</strong> ${co} &nbsp;|&nbsp; <strong>Contact:</strong> ${cname} &nbsp;|&nbsp; <strong>Email:</strong> ${email} &nbsp;|&nbsp; <strong>Phone:</strong> ${phone}<br>
+      <strong>Delivery ZIP:</strong> ${zip} &nbsp;|&nbsp; <strong>PO / Ref:</strong> ${po} &nbsp;|&nbsp; <strong>Need By:</strong> ${ddate} &nbsp;|&nbsp; <strong>Method:</strong> ${deliv}<br>
+      ${reqs.length ? '<strong>Special Req:</strong> '+reqs.join(', ')+'<br>' : ''}
+      ${dnotes ? '<strong>Notes:</strong> '+dnotes : ''}
+    </div>
+    <div style="overflow-x:auto;">
+    <table class="review-table">
+      <thead><tr>
+        <th>#</th><th>Material / Grade</th><th>Dimensions</th>
+        <th>Qty</th><th>Cut</th><th>Est. Lbs</th><th>Processing</th><th>Notes</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="5" style="text-align:right;padding-right:16px;">TOTAL ESTIMATED WEIGHT</td>
+          <td class="wt-cell">${totalLbs ? fmt(totalLbs)+' lbs' : '—'}</td>
+          <td colspan="2">${items.length} line item${items.length!==1?'s':''}</td>
+        </tr>
+      </tfoot>
+    </table>
+    </div>`;
+}
+
+// ── COLLECT ITEMS ──────────────────────────────────────────────────
+function collectItems() {
+  const result = [];
+  document.querySelectorAll('.item-card').forEach(card => {
+    const id       = card.id.replace('item-','');
+    const shapeKey = document.getElementById(`shape-${id}`)?.value;
+    const grade    = document.getElementById(`grade-${id}`)?.value || '';
+    const qty      = parseFloat(document.getElementById(`qty-${id}`)?.value) || 1;
+    const unit     = document.getElementById(`unit-${id}`)?.value || 'pcs';
+    const cut      = document.getElementById(`cut-${id}`)?.value  || '';
+    const proc     = document.getElementById(`proc-${id}`)?.value || '';
+    const notes    = document.getElementById(`notes-${id}`)?.value.trim() || '';
+    const shape    = SHAPES[shapeKey];
+    if (!shape) return;
+
+    const d = {};
+    let dimsArr = [];
+    shape.dims.forEach(dim => {
+      const el = document.getElementById(`dim-${id}-${dim.id}`);
+      if (el) {
+        const v = parseFloat(el.value) || 0;
+        d[dim.id] = v;
+        if (v) dimsArr.push(`${dim.label}: ${v}${dim.unit ? ' '+dim.unit : ''}`);
+      } else if (dim.id === 'desc') {
+        const el2 = document.getElementById(`dim-${id}-desc`);
+        if (el2) dimsArr.push(el2.value);
+      }
+    });
+
+    const lbs = shape.weight ? shape.weight(d, qty) : null;
+    result.push({
+      shape: shape.label, grade, qty, unit, cut, proc, notes,
+      dimsStr: dimsArr.join(', ') || '—',
+      lbs: lbs && lbs > 0 ? lbs : null
+    });
+  });
+  return result;
+}
+
+function collectReqs() {
+  const r = [];
+  if (document.getElementById('req-cmtr')?.checked) r.push('CMTR/MTR');
+  if (document.getElementById('req-3pi')?.checked)  r.push('3rd-Party Inspection');
+  if (document.getElementById('req-pkg')?.checked)  r.push('Special Packaging');
+  if (document.getElementById('req-kit')?.checked)  r.push('Kitting');
+  if (document.getElementById('req-cad')?.checked)  r.push('CAD Drawing');
+  return r;
+}
+
+// ── FORMAT NUMBER ──────────────────────────────────────────────────
+function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
+
+// ── SUBMIT ─────────────────────────────────────────────────────────
+function buildRFQText() {
+  const co    = document.getElementById('c-company').value || '—';
+  const cname = document.getElementById('c-name').value    || '—';
+  const email = document.getElementById('c-email').value   || '—';
+  const phone = document.getElementById('c-phone').value   || '—';
+  const zip   = document.getElementById('c-zip').value     || '—';
+  const po    = document.getElementById('c-po').value      || '—';
+  const dateEl= document.getElementById('d-date').value;
+  const ddate = dateEl ? new Date(dateEl+'T00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : 'Flexible';
+  const deliv = document.querySelector('input[name="delivery"]:checked')?.value || '—';
+  const addr  = document.getElementById('d-addr').value    || '—';
+  const reqs  = collectReqs();
+  const dnotes= document.getElementById('d-notes').value   || 'None';
+
+  const items  = collectItems();
+  let totalLbs = 0;
+
+  const lines = items.map((it, i) => {
+    if (it.lbs) totalLbs += it.lbs;
+    return `  ${i+1}. ${it.shape}${it.grade ? ' | '+it.grade : ''}
+     Dims:       ${it.dimsStr}
+     Qty:        ${it.qty} ${it.unit}
+     Cut:        ${it.cut}
+     Processing: ${it.proc}
+     Est. Lbs:   ${it.lbs ? fmt(it.lbs)+' lbs' : 'N/A'}
+     Notes:      ${it.notes || 'None'}`;
+  }).join('\n\n');
+
+  return `REQUEST FOR QUOTE — GUARDIAN METALS, LLC
+${'═'.repeat(52)}
+
+SUBMITTED: ${new Date().toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})}
+
+CUSTOMER INFORMATION
+  Company:       ${co}
+  Contact:       ${cname}
+  Email:         ${email}
+  Phone:         ${phone}
+  Delivery ZIP:  ${zip}
+  PO / Ref:      ${po}
+
+DELIVERY & REQUIREMENTS
+  Method:        ${deliv}
+  Need By:       ${ddate}
+  Ship To:       ${addr}
+  Special Req:   ${reqs.length ? reqs.join(', ') : 'None'}
+  Notes:         ${dnotes}
+
+MATERIAL REQUIREMENTS (${items.length} line item${items.length!==1?'s':''})
+${'─'.repeat(52)}
+${lines}
+
+${'─'.repeat(52)}
+TOTAL ESTIMATED WEIGHT: ${totalLbs ? fmt(totalLbs)+' lbs' : 'N/A'}
+${'═'.repeat(52)}
+
+Please reply to ${email} with pricing and availability.
+Thank you for the quick turnaround — Guardian Metals!`;
+}
+
+function submitRFQ() {
+  const email = document.getElementById('c-email').value;
+  const co    = document.getElementById('c-company').value;
+  if (!email || !co) { alert('Please fill in at least Company Name and Email in Step 01 before submitting.'); return; }
+  if (!document.querySelectorAll('.item-card').length) { alert('Please add at least one line item in Step 02.'); return; }
+
+  buildReview();
+  const body    = buildRFQText();
+  const subject = `RFQ — ${co} — ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
+  const mailto  = `mailto:sales@guardian-metals.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(mailto, '_blank');
+  document.getElementById('success').style.display = 'block';
+  document.getElementById('success').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function copyRFQ() {
+  const co = document.getElementById('c-company').value;
+  if (!co) { alert('Fill in at least your Company Name first.'); return; }
+  const text = buildRFQText();
+  navigator.clipboard.writeText(text).then(() => {
+    alert('RFQ text copied to clipboard! Paste it into an email to sales@guardian-metals.com.');
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    alert('RFQ text copied to clipboard!');
+  });
+}
+
+// ── INIT: start with one item ──────────────────────────────────────
+addItem();
+</script>
+</body>
+</html>
