@@ -5,243 +5,533 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request for Quote — Guardian Metals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #F2F6EE;
-  --surface: #FFFFFF;
-  --header-bg: #132D10;
-  --accent: #7AB541;
-  --accent-dk: #5E8F2E;
-  --blue: #1C3D10;
-  --text: #1A2535;
-  --text2: #4A5A3C;
-  --border: #C5D9B0;
-  --border2: #A0BC88;
-  --weight-bg: #EEF7E4;
-  --weight-txt: #5E8F2E;
-  --green: #15803D;
-  --radius: 10px;
-  --shadow: 0 2px 12px rgba(13,27,42,0.08);
+  --green:    #7AB541;
+  --green-dk: #5E8F2E;
+  --green-lt: #EEF8E0;
+  --green-xlt:#F6FCF0;
+  --text:     #212529;
+  --text2:    #6C757D;
+  --text3:    #ADB5BD;
+  --bg:       #F8F9FA;
+  --surface:  #FFFFFF;
+  --border:   #DEE2E6;
+  --border2:  #CED4DA;
+  --red:      #DC3545;
+  --amber:    #F59E0B;
+  --success:  #198754;
+  --radius:   8px;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.07);
+  --shadow:   0 2px 12px rgba(0,0,0,.09);
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
 
-/* ── HEADER ── */
+body {
+  font-family: 'Open Sans', 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── HEADER ──────────────────────────────────────────── */
 header {
-  background: var(--header-bg);
-  background-image:
-    repeating-linear-gradient(45deg, transparent, transparent 28px, rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px),
-    repeating-linear-gradient(-45deg, transparent, transparent 28px, rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px);
-  padding: 32px 24px 28px;
-  border-bottom: 3px solid var(--accent);
+  background: #fff;
+  border-bottom: 3px solid var(--green);
+  padding: 18px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
 }
-.header-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-.logo { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; }
-.logo-name { font-size: 2.2rem; font-weight: 800; color: #fff; letter-spacing: 0.04em; line-height: 1; }
-.logo-name span { color: var(--accent); }
-.logo-sub { font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; }
-.header-right { text-align: right; }
-.rfq-badge { display: inline-block; background: var(--accent); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 14px; border-radius: 4px; }
-.header-tagline { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 6px; letter-spacing: 0.06em; }
+.header-inner {
+  max-width: 980px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-mark {
+  width: 44px; height: 44px; flex-shrink: 0;
+}
+.logo-text { font-family: 'Raleway', sans-serif; line-height: 1.1; }
+.logo-text .name { font-size: 1.35rem; font-weight: 800; color: var(--text); letter-spacing: .04em; }
+.logo-text .name span { color: var(--green); }
+.logo-text .tagline { font-size: .65rem; font-weight: 500; color: var(--text2); letter-spacing: .1em; text-transform: uppercase; }
+.rfq-pill {
+  background: var(--green); color: #fff;
+  font-family: 'Raleway', sans-serif; font-size: .8rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 7px 18px; border-radius: 4px;
+}
 
-/* ── WEIGHT TICKER ── */
+/* ── HERO BAND ───────────────────────────────────────── */
+.hero-band {
+  background: var(--green);
+  color: #fff;
+  padding: 22px 24px;
+  text-align: center;
+}
+.hero-band h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.hero-band p {
+  font-size: .88rem; opacity: .9;
+}
+
+/* ── TICKER ──────────────────────────────────────────── */
 #ticker {
-  background: var(--blue); color: #fff;
-  padding: 8px 24px; text-align: center;
-  font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.08em;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 8px 24px;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: .82rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text2);
   position: sticky; top: 0; z-index: 100;
-  transition: background 0.3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+  transition: background .2s;
 }
-#ticker span { color: var(--accent); }
-#ticker.has-weight { background: #0A1A08; }
+#ticker span { color: var(--green); font-size: 1rem; }
+#ticker.has-weight { background: var(--green-xlt); color: var(--text); }
 
-/* ── LAYOUT ── */
-main { max-width: 960px; margin: 32px auto 60px; padding: 0 16px; display: flex; flex-direction: column; gap: 24px; }
+/* ── LAYOUT ──────────────────────────────────────────── */
+main {
+  max-width: 980px; margin: 32px auto 72px;
+  padding: 0 16px;
+  display: flex; flex-direction: column; gap: 20px;
+}
 
-/* ── STEP CARD ── */
-.step-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
-.step-head { background: var(--blue); padding: 14px 24px; display: flex; align-items: center; gap: 14px; }
-.step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; white-space: nowrap; }
-.step-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.35rem; font-weight: 700; color: #fff; letter-spacing: 0.04em; }
-.step-body { padding: 24px; }
+/* ── STEP CARD ───────────────────────────────────────── */
+.step-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.step-head {
+  padding: 16px 24px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; gap: 14px;
+  background: #fff;
+}
+.step-num {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem; font-weight: 800; color: var(--green);
+  line-height: 1; flex-shrink: 0;
+}
+.step-info { display: flex; flex-direction: column; gap: 1px; }
+.step-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem; font-weight: 700; color: var(--text);
+  text-transform: uppercase; letter-spacing: .06em;
+}
+.step-desc { font-size: .75rem; color: var(--text2); }
+.step-body { padding: 22px 24px; }
 
-/* ── FORM GRID ── */
+/* ── FORM ELEMENTS ───────────────────────────────────── */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 .span-2 { grid-column: span 2; }
-label { display: flex; flex-direction: column; gap: 5px; font-size: 0.72rem; font-weight: 600; color: var(--text2); letter-spacing: 0.07em; text-transform: uppercase; }
+
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label, label.lbl {
+  font-family: 'Raleway', sans-serif;
+  font-size: .7rem; font-weight: 700;
+  color: var(--text2); letter-spacing: .08em; text-transform: uppercase;
+  display: block;
+}
+/* Override broad label selector for radio/check labels */
+label { font-family: 'Open Sans', sans-serif; }
+
 input, select, textarea {
-  font-family: 'Inter', sans-serif; font-size: 0.88rem; color: var(--text);
-  border: 1.5px solid var(--border); border-radius: 6px; padding: 9px 11px;
-  background: #fff; outline: none; width: 100%; transition: border-color 0.15s;
+  font-family: 'Open Sans', sans-serif;
+  font-size: .88rem; color: var(--text);
+  border: 1.5px solid var(--border2);
+  border-radius: 6px; padding: 9px 12px;
+  background: #fff; outline: none; width: 100%;
+  transition: border-color .15s, box-shadow .15s;
 }
-input:focus, select:focus, textarea:focus { border-color: var(--accent); }
-input::placeholder, textarea::placeholder { color: #AABBCC; }
-textarea { resize: vertical; min-height: 60px; }
-.req { color: var(--accent); }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(122,181,65,.15);
+}
+input::placeholder, textarea::placeholder { color: var(--text3); }
+textarea { resize: vertical; min-height: 62px; }
+.req { color: var(--green); }
 
-/* ── LINE ITEMS ── */
-#line-items { display: flex; flex-direction: column; gap: 16px; }
-.item-card { border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; transition: border-color 0.2s; }
-.item-card:focus-within { border-color: var(--accent); }
-.item-head { background: var(--bg); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
-.item-label { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--blue); letter-spacing: 0.06em; }
-.item-label em { color: var(--accent); font-style: normal; }
-.btn-remove { background: none; border: 1.5px solid var(--border2); color: var(--text2); border-radius: 5px; padding: 3px 10px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all 0.15s; }
-.btn-remove:hover { border-color: #E05050; color: #E05050; background: #FFF0F0; }
-.item-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+/* ── LINE ITEMS ──────────────────────────────────────── */
+#line-items { display: flex; flex-direction: column; gap: 14px; }
+
+.item-card {
+  border: 1.5px solid var(--border);
+  border-radius: 8px; overflow: hidden;
+  transition: border-color .15s, box-shadow .15s;
+}
+.item-card:focus-within {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(122,181,65,.12);
+}
+.item-head {
+  background: var(--bg);
+  padding: 9px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.item-num {
+  font-family: 'Raleway', sans-serif;
+  font-size: .75rem; font-weight: 700;
+  color: var(--green); letter-spacing: .1em; text-transform: uppercase;
+}
+.btn-remove {
+  background: none; border: 1px solid var(--border2);
+  color: var(--text2); border-radius: 5px;
+  padding: 3px 10px; cursor: pointer;
+  font-size: .75rem; font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  transition: all .15s;
+}
+.btn-remove:hover { border-color: var(--red); color: var(--red); background: #FFF5F5; }
+
+.item-body { padding: 16px; display: flex; flex-direction: column; gap: 13px; }
+
 .dims-row { display: flex; gap: 10px; flex-wrap: wrap; }
-.dim-field { display: flex; flex-direction: column; gap: 5px; min-width: 90px; flex: 1; }
-.dim-unit { font-size: 0.65rem; color: var(--text2); font-weight: 500; }
-.item-bottom { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
-.item-bottom > label { flex: 1; min-width: 100px; }
+.dim-field { display: flex; flex-direction: column; gap: 4px; min-width: 90px; flex: 1; }
+.dim-unit { font-size: .63rem; color: var(--text3); font-weight: 500; }
+
+.item-row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.item-row > .field { flex: 1; min-width: 100px; }
+
 .weight-pill {
-  background: var(--weight-bg); border: 1.5px solid #B8DCA0; border-radius: 20px;
-  padding: 6px 14px; white-space: nowrap; align-self: flex-end;
-  font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700;
-  color: var(--weight-txt); letter-spacing: 0.04em; min-width: 110px; text-align: center;
+  background: var(--green-lt);
+  border: 1.5px solid #C0DFA0;
+  border-radius: 20px;
+  padding: 7px 16px;
+  white-space: nowrap; align-self: flex-end;
+  font-family: 'Raleway', sans-serif;
+  font-size: .88rem; font-weight: 700;
+  color: var(--green-dk);
+  letter-spacing: .02em; min-width: 110px; text-align: center;
 }
 
-/* ── ADD ITEM BUTTON ── */
-.btn-add { display: flex; align-items: center; gap: 8px; background: none; border: 2px dashed var(--border2); color: var(--blue); border-radius: 8px; padding: 12px 20px; cursor: pointer; font-weight: 600; font-size: 0.9rem; width: 100%; justify-content: center; transition: all 0.15s; margin-top: 4px; }
-.btn-add:hover { border-color: var(--accent); color: var(--accent); background: var(--weight-bg); }
-.btn-add svg { flex-shrink: 0; }
+/* ── ADD ITEM BTN ────────────────────────────────────── */
+.btn-add {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: none;
+  border: 2px dashed var(--border2);
+  color: var(--text2);
+  border-radius: 8px; padding: 12px 20px;
+  cursor: pointer; font-weight: 600; font-size: .88rem;
+  font-family: 'Open Sans', sans-serif;
+  width: 100%; transition: all .15s; margin-top: 4px;
+}
+.btn-add:hover { border-color: var(--green); color: var(--green); background: var(--green-xlt); }
 
-/* ── DELIVERY ── */
-.radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
-.radio-opt { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.88rem; font-weight: 500; color: var(--text); padding: 9px 16px; border: 1.5px solid var(--border); border-radius: 6px; transition: all 0.15s; user-select: none; }
-.radio-opt:has(input:checked) { border-color: var(--accent); background: var(--weight-bg); color: var(--accent); }
-.radio-opt input[type=radio] { accent-color: var(--accent); }
-.check-group { display: flex; flex-direction: column; gap: 8px; }
-.check-opt { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.88rem; font-weight: 500; color: var(--text); }
-.check-opt input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+/* ── DELIVERY SECTION ────────────────────────────────── */
+.radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+.radio-opt {
+  display: flex; align-items: center; gap: 8px; cursor: pointer;
+  font-size: .86rem; font-weight: 500; color: var(--text);
+  padding: 9px 16px;
+  border: 1.5px solid var(--border2); border-radius: 6px;
+  transition: all .15s; user-select: none;
+  font-family: 'Open Sans', sans-serif;
+}
+.radio-opt:has(input:checked) {
+  border-color: var(--green); background: var(--green-lt); color: var(--green-dk);
+}
+.radio-opt input[type=radio] { accent-color: var(--green); }
 
-/* ── REVIEW TABLE ── */
+.check-group { display: flex; flex-direction: column; gap: 9px; }
+.check-opt {
+  display: flex; align-items: center; gap: 9px; cursor: pointer;
+  font-size: .86rem; color: var(--text);
+  font-family: 'Open Sans', sans-serif;
+}
+.check-opt input[type=checkbox] { accent-color: var(--green); width: 16px; height: 16px; flex-shrink: 0; }
+
+.section-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: .7rem; font-weight: 700;
+  color: var(--text2); letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+
+/* ── ATTACHMENT ZONE ─────────────────────────────────── */
+.att-wrap { display: flex; flex-direction: column; gap: 6px; }
+.att-zone-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: .7rem; font-weight: 700;
+  color: var(--text2); letter-spacing: .08em; text-transform: uppercase;
+}
+.att-zone-label span { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--text3); font-family: 'Open Sans', sans-serif; }
+.att-zone {
+  border: 1.5px dashed var(--border2); border-radius: 6px;
+  padding: 12px 14px; cursor: pointer;
+  transition: all .15s; background: var(--bg);
+}
+.att-zone:hover { border-color: var(--green); background: var(--green-xlt); }
+.att-zone input[type=file] { display: none; }
+.att-trigger { display: flex; align-items: center; gap: 10px; }
+.att-icon { color: var(--green); flex-shrink: 0; opacity: .7; }
+.att-cta { font-size: .82rem; color: var(--text2); }
+.att-cta strong { color: var(--text); font-weight: 600; }
+
+.fmt-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.fmt-chip { font-size: .63rem; font-weight: 700; letter-spacing: .06em; padding: 2px 7px; border-radius: 3px; border: 1px solid; font-family: 'Raleway', sans-serif; }
+.fmt-cad  { color: #1D4ED8; background: #EFF6FF; border-color: #BFDBFE; }
+.fmt-cnc  { color: #15803D; background: #F0FDF4; border-color: #BBF7D0; }
+.fmt-3d   { color: #6D28D9; background: #F5F3FF; border-color: #DDD6FE; }
+.fmt-doc  { color: #B91C1C; background: #FEF2F2; border-color: #FECACA; }
+.fmt-img  { color: #C2410C; background: #FFF7ED; border-color: #FED7AA; }
+.fmt-vec  { color: #0E7490; background: #ECFEFF; border-color: #A5F3FC; }
+
+.att-chips { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+.att-chip { display: flex; align-items: center; gap: 7px; padding: 5px 10px; border-radius: 5px; border: 1.5px solid; font-size: .79rem; font-weight: 500; font-family: 'Open Sans', sans-serif; }
+.att-chip .chip-ext { font-size: .62rem; font-weight: 800; padding: 1px 5px; border-radius: 2px; flex-shrink: 0; font-family: 'Raleway', sans-serif; }
+.att-chip .chip-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.att-chip .chip-size { font-size: .72rem; opacity: .6; white-space: nowrap; flex-shrink: 0; }
+.att-chip .chip-del { background: none; border: none; cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 2px; opacity: .4; flex-shrink: 0; }
+.att-chip .chip-del:hover { opacity: 1; color: var(--red); }
+.chip-cad  { color: #1D4ED8; background: #EFF6FF; border-color: #BFDBFE; }
+.chip-cad  .chip-ext { background: #BFDBFE; color: #1E40AF; }
+.chip-cnc  { color: #15803D; background: #F0FDF4; border-color: #BBF7D0; }
+.chip-cnc  .chip-ext { background: #BBF7D0; color: #166534; }
+.chip-3d   { color: #6D28D9; background: #F5F3FF; border-color: #DDD6FE; }
+.chip-3d   .chip-ext { background: #DDD6FE; color: #5B21B6; }
+.chip-doc  { color: #B91C1C; background: #FEF2F2; border-color: #FECACA; }
+.chip-doc  .chip-ext { background: #FECACA; color: #991B1B; }
+.chip-img  { color: #C2410C; background: #FFF7ED; border-color: #FED7AA; }
+.chip-img  .chip-ext { background: #FED7AA; color: #9A3412; }
+.chip-vec  { color: #0E7490; background: #ECFEFF; border-color: #A5F3FC; }
+.chip-vec  .chip-ext { background: #A5F3FC; color: #155E75; }
+.chip-other{ color: var(--text2); background: var(--bg); border-color: var(--border2); }
+.chip-other .chip-ext { background: var(--border); color: var(--text); }
+
+/* ── GLOBAL FILES ────────────────────────────────────── */
+.global-files-section {
+  border-top: 1px solid var(--border);
+  padding-top: 20px; margin-top: 4px;
+}
+.global-files-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: .88rem; font-weight: 700; color: var(--text);
+  letter-spacing: .03em; margin-bottom: 10px;
+}
+.global-files-title span { font-weight: 400; color: var(--text2); font-size: .8rem; font-family: 'Open Sans', sans-serif; }
+
+/* ── REVIEW TABLE ────────────────────────────────────── */
 #review-area { overflow-x: auto; }
-.review-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 16px; }
-.review-table th { background: var(--blue); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 9px 12px; text-align: left; white-space: nowrap; }
+.review-table { width: 100%; border-collapse: collapse; font-size: .82rem; margin-bottom: 16px; }
+.review-table th {
+  background: var(--text); color: #fff;
+  font-family: 'Raleway', sans-serif; font-size: .75rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 9px 12px; text-align: left; white-space: nowrap;
+}
+.review-table th:first-child { background: var(--green); }
 .review-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-.review-table tr:hover td { background: #F8FAFC; }
-.review-table .line-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--accent); font-size: 1rem; }
-.review-table tfoot td { font-weight: 600; background: #EEF5E4; border-top: 2px solid var(--border2); font-size: 0.85rem; }
-.review-table .wt-cell { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--weight-txt); font-size: 0.95rem; }
-.total-row td { background: var(--blue) !important; color: #fff !important; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; }
-.total-row .wt-cell { color: var(--accent) !important; font-size: 1.1rem; }
-.review-meta { font-size: 0.82rem; color: var(--text2); margin-bottom: 20px; line-height: 1.8; }
-.review-meta strong { color: var(--text); }
-.review-empty { color: var(--text2); font-style: italic; padding: 16px 0; }
+.review-table tr:hover td { background: var(--green-xlt); }
+.review-table .line-n { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--green); font-size: 1rem; }
+.review-table .wt-cell { font-family: 'Raleway', sans-serif; font-weight: 700; color: var(--green-dk); }
+.total-row td { background: var(--text) !important; color: #fff !important; font-family: 'Raleway', sans-serif; font-weight: 700; }
+.total-row .wt-cell { color: var(--green) !important; font-size: 1rem; }
+.review-meta { font-size: .82rem; color: var(--text2); margin-bottom: 18px; line-height: 1.9; }
+.review-meta strong { color: var(--text); font-weight: 600; }
+.review-empty { color: var(--text2); font-style: italic; padding: 16px 0; font-size: .88rem; }
 
-/* ── ACTIONS ── */
-.action-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
-.btn-primary { background: var(--accent); color: #fff; border: none; border-radius: 7px; padding: 13px 28px; font-weight: 600; font-size: 0.95rem; cursor: pointer; letter-spacing: 0.03em; transition: background 0.15s; display: flex; align-items: center; gap: 8px; }
-.btn-primary:hover { background: var(--accent-dk); }
-.btn-secondary { background: none; color: var(--blue); border: 2px solid var(--blue); border-radius: 7px; padding: 11px 22px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.15s; }
-.btn-secondary:hover { background: var(--blue); color: #fff; }
-.btn-refresh { background: none; color: var(--text2); border: 1.5px solid var(--border2); border-radius: 7px; padding: 11px 18px; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
-.btn-refresh:hover { border-color: var(--blue); color: var(--blue); }
+/* ── ACTIONS ─────────────────────────────────────────── */
+.action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
 
-/* ── SUCCESS BANNER ── */
-#success { display: none; background: #F0FFF4; border: 2px solid var(--green); border-radius: var(--radius); padding: 20px 24px; margin-top: 8px; }
-#success h3 { color: var(--green); font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 6px; }
-#success p { color: #166534; font-size: 0.88rem; }
+.btn-primary {
+  background: var(--green); color: #fff; border: none;
+  border-radius: 6px; padding: 12px 26px;
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  font-size: .9rem; letter-spacing: .04em;
+  cursor: pointer; transition: background .15s;
+  display: flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--green-dk); }
 
-/* ── FOOTER ── */
-footer { text-align: center; padding: 24px; color: var(--text2); font-size: 0.75rem; }
-footer a { color: var(--accent); text-decoration: none; }
+.btn-outline {
+  background: none; color: var(--green);
+  border: 2px solid var(--green);
+  border-radius: 6px; padding: 10px 20px;
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  font-size: .85rem; cursor: pointer; transition: all .15s;
+}
+.btn-outline:hover { background: var(--green); color: #fff; }
 
-/* ── RESPONSIVE ── */
+.btn-ghost {
+  background: none; color: var(--text2);
+  border: 1px solid var(--border2);
+  border-radius: 6px; padding: 10px 18px;
+  font-family: 'Open Sans', sans-serif; font-weight: 600;
+  font-size: .82rem; cursor: pointer; transition: all .15s;
+}
+.btn-ghost:hover { border-color: var(--text); color: var(--text); }
+
+.btn-refresh {
+  background: none; color: var(--text2); border: 1px solid var(--border2);
+  border-radius: 6px; padding: 8px 16px; font-size: .82rem; font-weight: 600;
+  cursor: pointer; transition: all .15s; font-family: 'Open Sans', sans-serif;
+  margin-bottom: 18px;
+}
+.btn-refresh:hover { border-color: var(--green); color: var(--green); }
+
+/* ── SUCCESS / ATTACH ────────────────────────────────── */
+#success {
+  display: none; background: #F0FFF4;
+  border: 1.5px solid var(--success);
+  border-radius: var(--radius); padding: 18px 22px; margin-top: 10px;
+}
+#success h3 { color: var(--success); font-family: 'Raleway', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+#success p { color: #166534; font-size: .86rem; }
+
+#attach-reminder {
+  display: none; margin-top: 12px;
+  background: #FFFBEB; border: 1.5px solid var(--amber);
+  border-radius: 6px; padding: 12px 16px;
+}
+#attach-reminder p { font-size: .84rem; color: #92400E; margin-bottom: 8px; font-weight: 700; font-family: 'Raleway', sans-serif; }
+#attach-list { display: flex; flex-direction: column; gap: 4px; }
+.attach-line { display: flex; align-items: center; gap: 8px; font-size: .81rem; color: #78350F; }
+.attach-line .al-ext { font-size: .6rem; font-weight: 800; padding: 1px 5px; border-radius: 2px; flex-shrink: 0; font-family: 'Raleway', sans-serif; }
+.attach-line .al-context { font-size: .72rem; color: #A16207; }
+
+/* ── DIVIDER ─────────────────────────────────────────── */
+.step-divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer {
+  background: var(--text); color: rgba(255,255,255,.6);
+  text-align: center; padding: 28px 24px;
+  font-size: .75rem; line-height: 2;
+}
+footer strong { color: #fff; }
+footer a { color: var(--green); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 640px) {
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .span-2 { grid-column: span 1; }
   .header-inner { flex-direction: column; align-items: flex-start; }
-  .header-right { text-align: left; }
-  .item-bottom { flex-direction: column; }
+  .item-row { flex-direction: column; }
   .dims-row { flex-direction: column; }
   .dim-field { min-width: unset; }
   .radio-group { flex-direction: column; }
+  .action-row { flex-direction: column; }
 }
 @media print {
-  header, #ticker, .step-head, .btn-add, .btn-remove, .action-row, footer { display: none !important; }
-  .step-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+  header, .hero-band, #ticker, .step-head, .btn-add, .btn-remove, .action-row, footer { display: none !important; }
+  .step-card { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
 }
 </style>
 </head>
 <body>
 
+<!-- ── HEADER ── -->
 <header>
   <div class="header-inner">
-    <div class="logo">
-      <div class="logo-name">GUARDIAN <span>METALS</span></div>
-      <div class="logo-sub">Steel Service Center &nbsp;·&nbsp; Galt, California</div>
-    </div>
-    <div class="header-right">
-      <div class="rfq-badge">Request for Quote</div>
-      <div class="header-tagline">Pricing returned in minutes — no install required</div>
-    </div>
+    <a class="logo" href="#">
+      <!-- Shield / wings mark approximation -->
+      <svg class="logo-mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 3 L38 9 L38 22 C38 31 30 38 22 41 C14 38 6 31 6 22 L6 9 Z" fill="#7AB541" opacity=".15"/>
+        <path d="M22 3 L38 9 L38 22 C38 31 30 38 22 41 C14 38 6 31 6 22 L6 9 Z" stroke="#7AB541" stroke-width="2" fill="none"/>
+        <path d="M12 20 L18 14 L22 18 L26 12 L32 20" stroke="#212529" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="22" cy="27" r="3" fill="#7AB541"/>
+      </svg>
+      <div class="logo-text">
+        <div class="name">GUARDIAN <span>METALS</span></div>
+        <div class="tagline">Steel Service Center · Galt, CA</div>
+      </div>
+    </a>
+    <div class="rfq-pill">Request for Quote</div>
   </div>
 </header>
 
+<!-- ── HERO BAND ── -->
+<div class="hero-band">
+  <h1>Request a Quote</h1>
+  <p>Fill out the form below — Guardian Metals will respond within minutes during business hours.</p>
+</div>
+
+<!-- ── WEIGHT TICKER ── -->
 <div id="ticker">
-  Total estimated weight: <span id="total-weight">—</span>
+  Estimated order weight: <span id="total-weight">—</span>
 </div>
 
 <main>
 
-  <!-- ── STEP 1: CONTACT ── -->
+  <!-- STEP 1 -->
   <div class="step-card">
     <div class="step-head">
-      <div class="step-num">Step 01</div>
-      <div class="step-title">Your Information</div>
+      <div class="step-num">01</div>
+      <div class="step-info">
+        <div class="step-title">Your Information</div>
+        <div class="step-desc">Tell us who you are and where to reach you</div>
+      </div>
     </div>
     <div class="step-body">
       <div class="grid-2">
-        <label>Company Name <span class="req">*</span><input id="c-company" type="text" placeholder="Acme Fabricators, Inc."></label>
-        <label>Contact Name <span class="req">*</span><input id="c-name" type="text" placeholder="Jane Smith"></label>
-        <label>Email <span class="req">*</span><input id="c-email" type="email" placeholder="jane@acmefab.com"></label>
-        <label>Phone<input id="c-phone" type="tel" placeholder="(916) 555-0100"></label>
-        <label>Delivery ZIP<input id="c-zip" type="text" placeholder="95632" maxlength="10"></label>
-        <label>PO / Project Ref.<input id="c-po" type="text" placeholder="PO-2025-084 or Project Alpha"></label>
+        <div class="field"><label class="lbl">Company Name <span class="req">*</span></label><input id="c-company" type="text" placeholder="Acme Fabricators, Inc."></div>
+        <div class="field"><label class="lbl">Contact Name <span class="req">*</span></label><input id="c-name" type="text" placeholder="Jane Smith"></div>
+        <div class="field"><label class="lbl">Email <span class="req">*</span></label><input id="c-email" type="email" placeholder="jane@acmefab.com"></div>
+        <div class="field"><label class="lbl">Phone</label><input id="c-phone" type="tel" placeholder="(916) 555-0100"></div>
+        <div class="field"><label class="lbl">Delivery ZIP</label><input id="c-zip" type="text" placeholder="95632" maxlength="10"></div>
+        <div class="field"><label class="lbl">PO / Project Ref.</label><input id="c-po" type="text" placeholder="PO-2025-084 or Project Alpha"></div>
       </div>
     </div>
   </div>
 
-  <!-- ── STEP 2: LINE ITEMS ── -->
+  <!-- STEP 2 -->
   <div class="step-card">
     <div class="step-head">
-      <div class="step-num">Step 02</div>
-      <div class="step-title">Material Requirements</div>
+      <div class="step-num">02</div>
+      <div class="step-info">
+        <div class="step-title">Material Requirements</div>
+        <div class="step-desc">Add one line item per material type — attach drawings per line as needed</div>
+      </div>
     </div>
     <div class="step-body">
       <div id="line-items"></div>
       <button class="btn-add" onclick="addItem()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         Add Line Item
       </button>
     </div>
   </div>
 
-  <!-- ── STEP 3: DELIVERY ── -->
+  <!-- STEP 3 -->
   <div class="step-card">
     <div class="step-head">
-      <div class="step-num">Step 03</div>
-      <div class="step-title">Delivery &amp; Requirements</div>
+      <div class="step-num">03</div>
+      <div class="step-info">
+        <div class="step-title">Delivery &amp; Requirements</div>
+        <div class="step-desc">How you'd like to receive your order and any special needs</div>
+      </div>
     </div>
     <div class="step-body" style="display:flex;flex-direction:column;gap:20px;">
+
       <div>
-        <label style="margin-bottom:10px;">Fulfillment Method</label>
+        <span class="section-label">Fulfillment Method</span>
         <div class="radio-group">
           <label class="radio-opt"><input type="radio" name="delivery" value="Will Call (Customer Pickup)" checked> Will Call / Pickup</label>
           <label class="radio-opt"><input type="radio" name="delivery" value="Guardian Delivery"> Guardian Delivery</label>
           <label class="radio-opt"><input type="radio" name="delivery" value="Third-Party Carrier"> Third-Party Carrier</label>
         </div>
       </div>
+
       <div class="grid-2">
-        <label>Requested By Date<input id="d-date" type="date"></label>
-        <label>Delivery Address / Notes<input id="d-addr" type="text" placeholder="Same as billing, or enter address…"></label>
+        <div class="field"><label class="lbl">Requested By Date</label><input id="d-date" type="date"></div>
+        <div class="field"><label class="lbl">Delivery Address</label><input id="d-addr" type="text" placeholder="Same as billing, or enter address…"></div>
       </div>
+
       <div>
-        <label style="margin-bottom:10px;">Special Requirements</label>
+        <span class="section-label">Special Requirements</span>
         <div class="check-group">
           <label class="check-opt"><input type="checkbox" id="req-cmtr"> Certified Mill Test Reports (CMTR / MTR)</label>
           <label class="check-opt"><input type="checkbox" id="req-3pi"> Third-Party Inspection</label>
@@ -250,33 +540,66 @@ footer a { color: var(--accent); text-decoration: none; }
           <label class="check-opt"><input type="checkbox" id="req-cad"> CAD / Custom Fabrication Drawing Required</label>
         </div>
       </div>
-      <label>Additional Notes / Instructions
-        <textarea id="d-notes" placeholder="Any special instructions, tolerances, finish specs, or delivery constraints…"></textarea>
-      </label>
+
+      <div class="field">
+        <label class="lbl">Additional Notes</label>
+        <textarea id="d-notes" placeholder="Special instructions, tolerances, finish specs, delivery constraints…"></textarea>
+      </div>
+
+      <!-- ORDER-LEVEL FILES -->
+      <div class="global-files-section">
+        <div class="global-files-title">Order-Level Files <span>— specs or references that apply to the whole order</span></div>
+        <div class="att-wrap">
+          <div class="att-zone" id="global-zone" onclick="document.getElementById('global-input').click()">
+            <input type="file" id="global-input" multiple
+              accept=".dxf,.dwg,.nc1,.nc,.tap,.cnc,.step,.stp,.iges,.igs,.pdf,.jpg,.jpeg,.png,.svg,.ai,.eps"
+              onchange="onGlobalFiles(this)">
+            <div class="att-trigger">
+              <svg class="att-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+              <div class="att-cta"><strong>Click to attach order-level files</strong> — hold Shift or Ctrl to select multiple</div>
+            </div>
+            <div class="fmt-row">
+              <span class="fmt-chip fmt-cad">DXF</span><span class="fmt-chip fmt-cad">DWG</span>
+              <span class="fmt-chip fmt-cnc">NC1</span><span class="fmt-chip fmt-cnc">NC</span>
+              <span class="fmt-chip fmt-3d">STEP</span><span class="fmt-chip fmt-3d">IGES</span>
+              <span class="fmt-chip fmt-doc">PDF</span>
+              <span class="fmt-chip fmt-img">JPG</span><span class="fmt-chip fmt-img">PNG</span>
+              <span class="fmt-chip fmt-vec">SVG</span>
+            </div>
+          </div>
+          <div class="att-chips" id="global-chips"></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ── STEP 4: REVIEW ── -->
+  <!-- STEP 4 -->
   <div class="step-card">
     <div class="step-head">
-      <div class="step-num">Step 04</div>
-      <div class="step-title">Review &amp; Submit</div>
+      <div class="step-num">04</div>
+      <div class="step-info">
+        <div class="step-title">Review &amp; Submit</div>
+        <div class="step-desc">Confirm your request, then open your email client to send</div>
+      </div>
     </div>
     <div class="step-body">
-      <p style="font-size:0.85rem;color:var(--text2);margin-bottom:16px;">Verify your requirements below, then click <strong>Submit RFQ</strong> to open your email client with a pre-filled quote request. Guardian Metals will respond within minutes during business hours.</p>
-      <button class="btn-refresh" onclick="buildReview()" style="margin-bottom:20px;">↻ Refresh Summary</button>
+      <button class="btn-refresh" onclick="buildReview()">↻ Refresh Summary</button>
       <div id="review-area"><p class="review-empty">Click "Refresh Summary" to preview your RFQ before sending.</p></div>
       <div class="action-row">
         <button class="btn-primary" onclick="submitRFQ()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           Submit RFQ to Guardian Metals
         </button>
-        <button class="btn-secondary" onclick="copyRFQ()">Copy RFQ Text</button>
-        <button class="btn-refresh" onclick="window.print()">Print / Save PDF</button>
+        <button class="btn-outline" onclick="copyRFQ()">Copy RFQ Text</button>
+        <button class="btn-ghost" onclick="window.print()">Print / Save PDF</button>
       </div>
       <div id="success">
         <h3>✓ Your email client has opened!</h3>
-        <p>A pre-filled message addressed to <strong>sales@guardian-metals.com</strong> is ready to send. Add any attachments (drawings, specs) before hitting Send.</p>
+        <p>A pre-filled message to <strong>sales@guardian-metals.com</strong> is ready. Attach your files, then hit Send.</p>
+        <div id="attach-reminder">
+          <p>⚠ Attach all of these files before hitting Send:</p>
+          <div id="attach-list"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -284,198 +607,108 @@ footer a { color: var(--accent); text-decoration: none; }
 </main>
 
 <footer>
-  <strong>Guardian Metals, LLC</strong> &nbsp;·&nbsp; Galt, California &nbsp;·&nbsp; <a href="tel:2098435295">(209) 843-5295</a> &nbsp;·&nbsp; <a href="mailto:sales@guardian-metals.com">sales@guardian-metals.com</a><br>
-  <span style="margin-top:4px;display:block;">This RFQ form is for quoting purposes only. All pricing is subject to final confirmation by Guardian Metals.</span>
+  <strong>Guardian Metals, LLC</strong> &nbsp;·&nbsp; 650 Live Oak Ave, Galt, CA 95632<br>
+  <a href="tel:2098435295">(209) 843-5295</a> &nbsp;·&nbsp;
+  <a href="mailto:sales@guardian-metals.com">sales@guardian-metals.com</a> &nbsp;·&nbsp;
+  <a href="https://guardian-metals.com">guardian-metals.com</a><br>
+  <span style="opacity:.5;">This form is for quoting purposes only. All pricing subject to final confirmation by Guardian Metals.</span>
 </footer>
 
 <script>
-// ── SHAPE CATALOG ──────────────────────────────────────────────────
+// ── FILE CLASSIFIER ────────────────────────────────────────────────
+const EXT_CLASS = {
+  dxf:'cad',dwg:'cad',nc1:'cnc',nc:'cnc',tap:'cnc',cnc:'cnc',
+  step:'3d',stp:'3d',iges:'3d',igs:'3d',pdf:'doc',
+  jpg:'img',jpeg:'img',png:'img',bmp:'img',svg:'vec',ai:'vec',eps:'vec'
+};
+function extOf(n){ return (n.split('.').pop()||'').toLowerCase(); }
+function classOf(n){ return EXT_CLASS[extOf(n)]||'other'; }
+function sizeFmt(b){ return b>=1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB'; }
+
+function makeChip(fo, onRemove){
+  const ext = extOf(fo.name).toUpperCase();
+  const chip = document.createElement('div');
+  chip.className = `att-chip chip-${fo.cls}`;
+  chip.innerHTML =
+    `<span class="chip-ext">${ext}</span>`+
+    `<span class="chip-name" title="${fo.name}">${fo.name}</span>`+
+    `<span class="chip-size">${fo.size}</span>`+
+    `<button class="chip-del" title="Remove">×</button>`;
+  chip.querySelector('.chip-del').addEventListener('click',e=>{
+    e.stopPropagation(); onRemove(); chip.remove();
+  });
+  return chip;
+}
+
+// ── SHAPE DATA ─────────────────────────────────────────────────────
 const SHAPES = {
-  'sheet': {
-    label: 'Sheet / Plate',
-    grades: ['A36','A572-50','A514 (T-1)','HR P&O','CR 1008','CR Full Hard','Galvanized G90','Galvanized G60','Galvalume AZ55','304 Stainless 2B','316 Stainless 2B','5052-H32 Aluminum','6061-T6 Aluminum'],
-    dims: [
-      { id:'t', label:'Thickness', ph:'0.25', unit:'in' },
-      { id:'w', label:'Width', ph:'48', unit:'in' },
-      { id:'l', label:'Length', ph:'120', unit:'in' }
-    ],
-    weight: (d,q) => d.t && d.w && d.l ? d.t * d.w * d.l * 0.2836 * q : null
-  },
-  'flat-bar': {
-    label: 'Flat Bar',
-    grades: ['A36','A572-50','1018 CF','304 Stainless','316 Stainless'],
-    dims: [
-      { id:'t', label:'Thickness', ph:'0.25', unit:'in' },
-      { id:'w', label:'Width', ph:'3', unit:'in' },
-      { id:'l', label:'Length', ph:'240', unit:'in' }
-    ],
-    weight: (d,q) => d.t && d.w && d.l ? d.t * d.w * d.l * 0.2836 * q : null
-  },
-  'round-bar': {
-    label: 'Round Bar',
-    grades: ['A36','1018 CF','1045','4140 Annealed','4140 P&T','303 Stainless','304 Stainless','316 Stainless','2024 Aluminum','6061-T6 Aluminum'],
-    dims: [
-      { id:'d', label:'Diameter', ph:'1.0', unit:'in' },
-      { id:'l', label:'Length', ph:'144', unit:'in' }
-    ],
-    weight: (d,q) => d.d && d.l ? (Math.PI/4) * d.d*d.d * d.l * 0.2836 * q : null
-  },
-  'square-bar': {
-    label: 'Square Bar',
-    grades: ['A36','1018 CF','304 Stainless'],
-    dims: [
-      { id:'s', label:'Size', ph:'1.0', unit:'in' },
-      { id:'l', label:'Length', ph:'144', unit:'in' }
-    ],
-    weight: (d,q) => d.s && d.l ? d.s*d.s * d.l * 0.2836 * q : null
-  },
-  'hex-bar': {
-    label: 'Hex Bar',
-    grades: ['1018 CF','1045','12L14 Free Mach.','303 Stainless','304 Stainless'],
-    dims: [
-      { id:'af', label:'Across Flats', ph:'1.0', unit:'in' },
-      { id:'l', label:'Length', ph:'144', unit:'in' }
-    ],
-    weight: (d,q) => d.af && d.l ? (Math.sqrt(3)/2) * d.af*d.af * d.l * 0.2836 * q : null
-  },
-  'angle': {
-    label: 'Angle',
-    grades: ['A36','A572-50','304 Stainless'],
-    dims: [
-      { id:'l1', label:'Leg 1', ph:'3', unit:'in' },
-      { id:'l2', label:'Leg 2', ph:'3', unit:'in' },
-      { id:'t', label:'Thickness', ph:'0.25', unit:'in' },
-      { id:'len', label:'Length', ph:'240', unit:'in' }
-    ],
-    weight: (d,q) => d.l1&&d.l2&&d.t&&d.len ? (d.l1+d.l2-d.t)*d.t*d.len*0.2836*q : null
-  },
-  'channel': {
-    label: 'Channel (C / MC)',
-    grades: ['A36','A572-50','304 Stainless'],
-    dims: [
-      { id:'h', label:'Height', ph:'4', unit:'in' },
-      { id:'fw', label:'Flange W.', ph:'1.58', unit:'in' },
-      { id:'wt', label:'Web Thk.', ph:'0.184', unit:'in' },
-      { id:'ft', label:'Flange Thk.', ph:'0.296', unit:'in' },
-      { id:'len', label:'Length', ph:'240', unit:'in' }
-    ],
-    weight: (d,q) => d.h&&d.fw&&d.wt&&d.ft&&d.len
-      ? ((d.h-2*d.ft)*d.wt + 2*d.fw*d.ft)*d.len*0.2836*q : null
-  },
-  'wide-flange': {
-    label: 'Wide Flange / I-Beam',
-    grades: ['A36','A572-50','A992'],
-    dims: [
-      { id:'h', label:'Height', ph:'8', unit:'in' },
-      { id:'fw', label:'Flange W.', ph:'8', unit:'in' },
-      { id:'wt', label:'Web Thk.', ph:'0.40', unit:'in' },
-      { id:'ft', label:'Flange Thk.', ph:'0.56', unit:'in' },
-      { id:'len', label:'Length', ph:'480', unit:'in' }
-    ],
-    weight: (d,q) => d.h&&d.fw&&d.wt&&d.ft&&d.len
-      ? ((d.h-2*d.ft)*d.wt + 2*d.fw*d.ft)*d.len*0.2836*q : null
-  },
-  'round-hss': {
-    label: 'Round Tube / HSS',
-    grades: ['A500 Gr B','A513 DOM','A554','304 Stainless','316 Stainless'],
-    dims: [
-      { id:'od', label:'OD', ph:'2.0', unit:'in' },
-      { id:'wall', label:'Wall', ph:'0.120', unit:'in' },
-      { id:'len', label:'Length', ph:'240', unit:'in' }
-    ],
-    weight: (d,q) => d.od&&d.wall&&d.len
-      ? (Math.PI/4)*((d.od*d.od)-(d.od-2*d.wall)*(d.od-2*d.wall))*d.len*0.2836*q : null
-  },
-  'square-hss': {
-    label: 'Square Tube / HSS',
-    grades: ['A500 Gr B','A513'],
-    dims: [
-      { id:'s', label:'Size', ph:'2.0', unit:'in' },
-      { id:'wall', label:'Wall', ph:'0.120', unit:'in' },
-      { id:'len', label:'Length', ph:'240', unit:'in' }
-    ],
-    weight: (d,q) => d.s&&d.wall&&d.len
-      ? ((d.s*d.s)-((d.s-2*d.wall)*(d.s-2*d.wall)))*d.len*0.2836*q : null
-  },
-  'rect-hss': {
-    label: 'Rect. Tube / HSS',
-    grades: ['A500 Gr B','A513'],
-    dims: [
-      { id:'h', label:'Height', ph:'3', unit:'in' },
-      { id:'w', label:'Width', ph:'2', unit:'in' },
-      { id:'wall', label:'Wall', ph:'0.120', unit:'in' },
-      { id:'len', label:'Length', ph:'240', unit:'in' }
-    ],
-    weight: (d,q) => d.h&&d.w&&d.wall&&d.len
-      ? (d.h*d.w-(d.h-2*d.wall)*(d.w-2*d.wall))*d.len*0.2836*q : null
-  },
-  'pipe': {
-    label: 'Pipe',
-    grades: ['A53 Gr B ERW','A53 Gr B Seamless','A106 Gr B','A312 TP304','A312 TP316'],
-    dims: [
-      { id:'nps', label:'NPS (in)', ph:'2', unit:'' },
-      { id:'sch', label:'Schedule', ph:'40', unit:'' },
-      { id:'len', label:'Length', ph:'240', unit:'in' }
-    ],
-    weight: null
-  },
-  'custom': {
-    label: 'Custom / Other',
-    grades: [],
-    dims: [{ id:'desc', label:'Describe the material / form', ph:'e.g. 1/4" × 2" flat bar laser cut to profile…', unit:'' }],
-    weight: null
-  }
+  'sheet':       {label:'Sheet / Plate',      grades:['A36','A572-50','A514 (T-1)','HR P&O','CR 1008','CR Full Hard','Galvanized G90','Galvanized G60','Galvalume AZ55','304 Stainless 2B','316 Stainless 2B','5052-H32 Aluminum','6061-T6 Aluminum'], dims:[{id:'t',label:'Thickness',ph:'0.25',unit:'in'},{id:'w',label:'Width',ph:'48',unit:'in'},{id:'l',label:'Length',ph:'120',unit:'in'}], weight:(d,q)=>d.t&&d.w&&d.l?d.t*d.w*d.l*0.2836*q:null},
+  'flat-bar':    {label:'Flat Bar',           grades:['A36','A572-50','1018 CF','304 Stainless','316 Stainless'], dims:[{id:'t',label:'Thickness',ph:'0.25',unit:'in'},{id:'w',label:'Width',ph:'3',unit:'in'},{id:'l',label:'Length',ph:'240',unit:'in'}], weight:(d,q)=>d.t&&d.w&&d.l?d.t*d.w*d.l*0.2836*q:null},
+  'round-bar':   {label:'Round Bar',          grades:['A36','1018 CF','1045','4140 Annealed','4140 P&T','303 Stainless','304 Stainless','316 Stainless','2024 Aluminum','6061-T6 Aluminum'], dims:[{id:'d',label:'Diameter',ph:'1.0',unit:'in'},{id:'l',label:'Length',ph:'144',unit:'in'}], weight:(d,q)=>d.d&&d.l?(Math.PI/4)*d.d*d.d*d.l*0.2836*q:null},
+  'square-bar':  {label:'Square Bar',         grades:['A36','1018 CF','304 Stainless'], dims:[{id:'s',label:'Size',ph:'1.0',unit:'in'},{id:'l',label:'Length',ph:'144',unit:'in'}], weight:(d,q)=>d.s&&d.l?d.s*d.s*d.l*0.2836*q:null},
+  'hex-bar':     {label:'Hex Bar',            grades:['1018 CF','1045','12L14 Free Mach.','303 Stainless','304 Stainless'], dims:[{id:'af',label:'Across Flats',ph:'1.0',unit:'in'},{id:'l',label:'Length',ph:'144',unit:'in'}], weight:(d,q)=>d.af&&d.l?(Math.sqrt(3)/2)*d.af*d.af*d.l*0.2836*q:null},
+  'angle':       {label:'Angle',              grades:['A36','A572-50','304 Stainless'], dims:[{id:'l1',label:'Leg 1',ph:'3',unit:'in'},{id:'l2',label:'Leg 2',ph:'3',unit:'in'},{id:'t',label:'Thickness',ph:'0.25',unit:'in'},{id:'len',label:'Length',ph:'240',unit:'in'}], weight:(d,q)=>d.l1&&d.l2&&d.t&&d.len?(d.l1+d.l2-d.t)*d.t*d.len*0.2836*q:null},
+  'channel':     {label:'Channel (C / MC)',   grades:['A36','A572-50','304 Stainless'], dims:[{id:'h',label:'Height',ph:'4',unit:'in'},{id:'fw',label:'Flange W.',ph:'1.58',unit:'in'},{id:'wt',label:'Web Thk.',ph:'0.184',unit:'in'},{id:'ft',label:'Flange Thk.',ph:'0.296',unit:'in'},{id:'len',label:'Length',ph:'240',unit:'in'}], weight:(d,q)=>d.h&&d.fw&&d.wt&&d.ft&&d.len?((d.h-2*d.ft)*d.wt+2*d.fw*d.ft)*d.len*0.2836*q:null},
+  'wide-flange': {label:'Wide Flange / I-Beam',grades:['A36','A572-50','A992'], dims:[{id:'h',label:'Height',ph:'8',unit:'in'},{id:'fw',label:'Flange W.',ph:'8',unit:'in'},{id:'wt',label:'Web Thk.',ph:'0.40',unit:'in'},{id:'ft',label:'Flange Thk.',ph:'0.56',unit:'in'},{id:'len',label:'Length',ph:'480',unit:'in'}], weight:(d,q)=>d.h&&d.fw&&d.wt&&d.ft&&d.len?((d.h-2*d.ft)*d.wt+2*d.fw*d.ft)*d.len*0.2836*q:null},
+  'round-hss':   {label:'Round Tube / HSS',   grades:['A500 Gr B','A513 DOM','A554','304 Stainless','316 Stainless'], dims:[{id:'od',label:'OD',ph:'2.0',unit:'in'},{id:'wall',label:'Wall',ph:'0.120',unit:'in'},{id:'len',label:'Length',ph:'240',unit:'in'}], weight:(d,q)=>d.od&&d.wall&&d.len?(Math.PI/4)*((d.od*d.od)-(d.od-2*d.wall)*(d.od-2*d.wall))*d.len*0.2836*q:null},
+  'square-hss':  {label:'Square Tube / HSS',  grades:['A500 Gr B','A513'], dims:[{id:'s',label:'Size',ph:'2.0',unit:'in'},{id:'wall',label:'Wall',ph:'0.120',unit:'in'},{id:'len',label:'Length',ph:'240',unit:'in'}], weight:(d,q)=>d.s&&d.wall&&d.len?(d.s*d.s-(d.s-2*d.wall)*(d.s-2*d.wall))*d.len*0.2836*q:null},
+  'rect-hss':    {label:'Rect. Tube / HSS',   grades:['A500 Gr B','A513'], dims:[{id:'h',label:'Height',ph:'3',unit:'in'},{id:'w',label:'Width',ph:'2',unit:'in'},{id:'wall',label:'Wall',ph:'0.120',unit:'in'},{id:'len',label:'Length',ph:'240',unit:'in'}], weight:(d,q)=>d.h&&d.w&&d.wall&&d.len?(d.h*d.w-(d.h-2*d.wall)*(d.w-2*d.wall))*d.len*0.2836*q:null},
+  'pipe':        {label:'Pipe',               grades:['A53 Gr B ERW','A53 Gr B Seamless','A106 Gr B','A312 TP304','A312 TP316'], dims:[{id:'nps',label:'NPS (in)',ph:'2',unit:''},{id:'sch',label:'Schedule',ph:'40',unit:''},{id:'len',label:'Length',ph:'240',unit:'in'}], weight:null},
+  'custom':      {label:'Custom / Other',     grades:[], dims:[{id:'desc',label:'Describe material / form',ph:'e.g. 1/4" × 2" flat bar laser cut to profile…',unit:''}], weight:null}
 };
 
 // ── STATE ──────────────────────────────────────────────────────────
 let itemCount = 0;
+const fileStore = {};
+const globalFiles = [];
 
-// ── RENDER A LINE ITEM ─────────────────────────────────────────────
-function addItem() {
+// ── ADD ITEM ───────────────────────────────────────────────────────
+function addItem(){
   itemCount++;
   const id = itemCount;
+  fileStore[id] = [];
   const container = document.getElementById('line-items');
   const card = document.createElement('div');
   card.className = 'item-card';
   card.id = `item-${id}`;
   card.innerHTML = `
     <div class="item-head">
-      <div class="item-label">LINE <em>${id}</em></div>
+      <div class="item-num">Line Item ${id}</div>
       <button class="btn-remove" onclick="removeItem(${id})">Remove</button>
     </div>
     <div class="item-body">
       <div class="grid-2">
-        <label>Shape / Form <span class="req">*</span>
+        <div class="field"><label class="lbl">Shape / Form <span class="req">*</span></label>
           <select id="shape-${id}" onchange="onShapeChange(${id})">
             <option value="">— Select shape —</option>
             ${Object.entries(SHAPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}
           </select>
-        </label>
-        <label>Grade / Specification
+        </div>
+        <div class="field"><label class="lbl">Grade / Specification</label>
           <select id="grade-${id}"><option value="">— Select shape first —</option></select>
-        </label>
+        </div>
       </div>
       <div class="dims-row" id="dims-${id}"></div>
-      <div class="item-bottom">
-        <label>Quantity <span class="req">*</span>
+      <div class="item-row">
+        <div class="field"><label class="lbl">Quantity <span class="req">*</span></label>
           <input type="number" id="qty-${id}" min="1" placeholder="1" oninput="calcWeight(${id})">
-        </label>
-        <label>Unit
+        </div>
+        <div class="field"><label class="lbl">Unit</label>
           <select id="unit-${id}">
             <option value="pcs">Pieces</option>
             <option value="ft">Feet</option>
             <option value="lbs">Pounds</option>
           </select>
-        </label>
-        <label>Cut Type
+        </div>
+        <div class="field"><label class="lbl">Cut Type</label>
           <select id="cut-${id}">
             <option value="Mill / Stock Length">Mill / Stock Length</option>
             <option value="Cut-to-Length (Exact)">Cut-to-Length (Exact)</option>
-            <option value="Cut ±1/8&quot;">Cut ±1/8"</option>
+            <option value='Cut ±1/8"'>Cut ±1/8"</option>
             <option value="Random Length">Random Length</option>
           </select>
-        </label>
-        <label>Processing
+        </div>
+        <div class="field"><label class="lbl">Processing</label>
           <select id="proc-${id}">
             <option value="None">None / Mill Standard</option>
             <option value="Shear Cut">Shear Cut</option>
@@ -486,312 +719,310 @@ function addItem() {
             <option value="Kitting / Bundling">Kitting / Bundling</option>
             <option value="CAD Fabrication">CAD Fabrication</option>
           </select>
-        </label>
-        <div class="weight-pill" id="wt-${id}">~ — lbs</div>
+        </div>
+        <div class="weight-pill" id="wt-${id}">— lbs</div>
       </div>
-      <label>Line Notes
+      <div class="field"><label class="lbl">Line Notes</label>
         <textarea id="notes-${id}" placeholder="Special tolerances, finish, quantity breaks, reference drawing…"></textarea>
-      </label>
-    </div>
-  `;
+      </div>
+      <div class="att-wrap">
+        <div class="att-zone-label">Line Attachments <span>(optional — select multiple)</span></div>
+        <div class="att-zone" id="att-zone-${id}" onclick="document.getElementById('att-input-${id}').click()">
+          <input type="file" id="att-input-${id}" multiple
+            accept=".dxf,.dwg,.nc1,.nc,.tap,.cnc,.step,.stp,.iges,.igs,.pdf,.jpg,.jpeg,.png,.svg,.ai,.eps"
+            onchange="onLineFiles(${id},this)">
+          <div class="att-trigger">
+            <svg class="att-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+            <div class="att-cta">Click to attach drawings or CAD files for this line</div>
+          </div>
+          <div class="fmt-row">
+            <span class="fmt-chip fmt-cad">DXF</span><span class="fmt-chip fmt-cad">DWG</span>
+            <span class="fmt-chip fmt-cnc">NC1</span><span class="fmt-chip fmt-cnc">NC</span>
+            <span class="fmt-chip fmt-3d">STEP</span><span class="fmt-chip fmt-3d">IGES</span>
+            <span class="fmt-chip fmt-doc">PDF</span>
+            <span class="fmt-chip fmt-img">JPG</span><span class="fmt-chip fmt-img">PNG</span>
+            <span class="fmt-chip fmt-vec">SVG</span>
+          </div>
+        </div>
+        <div class="att-chips" id="att-chips-${id}"></div>
+      </div>
+    </div>`;
   container.appendChild(card);
-  // Scroll to new card
-  setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
 }
 
-function removeItem(id) {
-  const card = document.getElementById(`item-${id}`);
-  if (card) card.remove();
+function removeItem(id){
+  document.getElementById(`item-${id}`)?.remove();
+  delete fileStore[id];
   updateTicker();
 }
 
-// ── SHAPE CHANGE → UPDATE GRADE + DIMS ────────────────────────────
-function onShapeChange(id) {
-  const shapeKey = document.getElementById(`shape-${id}`).value;
-  const gradeEl = document.getElementById(`grade-${id}`);
-  const dimsEl  = document.getElementById(`dims-${id}`);
-  const shape   = SHAPES[shapeKey];
-
-  // Grades
-  gradeEl.innerHTML = shape
-    ? ['<option value="">— Select grade —</option>',
-       ...shape.grades.map(g=>`<option value="${g}">${g}</option>`)].join('')
+// ── SHAPE CHANGE ───────────────────────────────────────────────────
+function onShapeChange(id){
+  const key   = document.getElementById(`shape-${id}`).value;
+  const grade = document.getElementById(`grade-${id}`);
+  const dims  = document.getElementById(`dims-${id}`);
+  const shape = SHAPES[key];
+  grade.innerHTML = shape
+    ? ['<option value="">— Select grade —</option>',...shape.grades.map(g=>`<option value="${g}">${g}</option>`)].join('')
     : '<option value="">— Select shape first —</option>';
-
-  // Dimension fields
-  dimsEl.innerHTML = '';
-  if (shape && shape.dims.length) {
-    shape.dims.forEach(dim => {
+  dims.innerHTML = '';
+  if(shape?.dims?.length){
+    shape.dims.forEach(dim=>{
       const wrap = document.createElement('div');
       wrap.className = 'dim-field';
-      const isLong = dim.label.length > 12;
-      wrap.innerHTML = `
-        <label style="text-transform:uppercase;font-size:0.7rem;font-weight:600;color:var(--text2);gap:4px;">
-          ${dim.label}${dim.unit ? ` <span class="dim-unit">(${dim.unit})</span>` : ''}
-          <input type="number" step="any" min="0" id="dim-${id}-${dim.id}"
-            placeholder="${dim.ph}" oninput="calcWeight(${id})"
-            style="${isLong ? 'min-width:160px;' : ''}">
-        </label>`;
-      dimsEl.appendChild(wrap);
+      wrap.innerHTML = `<label class="lbl" style="text-transform:uppercase;">
+        ${dim.label}${dim.unit?` <span class="dim-unit">(${dim.unit})</span>`:''}
+        <input type="number" step="any" min="0" id="dim-${id}-${dim.id}" placeholder="${dim.ph}" oninput="calcWeight(${id})" style="margin-top:4px;">
+      </label>`;
+      dims.appendChild(wrap);
     });
   }
-
   calcWeight(id);
 }
 
-// ── WEIGHT CALCULATOR ──────────────────────────────────────────────
-function calcWeight(id) {
-  const shapeKey = document.getElementById(`shape-${id}`)?.value;
-  const qty      = parseFloat(document.getElementById(`qty-${id}`)?.value) || 1;
-  const pill     = document.getElementById(`wt-${id}`);
-  if (!pill) return;
-
-  const shape = SHAPES[shapeKey];
-  if (!shape || !shape.weight) { pill.textContent = '~ — lbs'; updateTicker(); return; }
-
-  // Collect dim values
-  const d = {};
-  shape.dims.forEach(dim => {
-    const el = document.getElementById(`dim-${id}-${dim.id}`);
-    if (el) d[dim.id] = parseFloat(el.value) || 0;
+// ── WEIGHT ─────────────────────────────────────────────────────────
+function calcWeight(id){
+  const key  = document.getElementById(`shape-${id}`)?.value;
+  const qty  = parseFloat(document.getElementById(`qty-${id}`)?.value)||1;
+  const pill = document.getElementById(`wt-${id}`);
+  if(!pill) return;
+  const shape = SHAPES[key];
+  if(!shape?.weight){ pill.textContent='— lbs'; updateTicker(); return; }
+  const d={};
+  shape.dims.forEach(dim=>{
+    const el=document.getElementById(`dim-${id}-${dim.id}`);
+    if(el) d[dim.id]=parseFloat(el.value)||0;
   });
-
-  const lbs = shape.weight(d, qty);
-  if (lbs === null || isNaN(lbs) || lbs <= 0) {
-    pill.textContent = '~ — lbs';
-  } else {
-    pill.textContent = `~ ${fmt(lbs)} lbs`;
-  }
+  const lbs = shape.weight(d,qty);
+  pill.textContent = (lbs&&lbs>0) ? `~${fmt(lbs)} lbs` : '— lbs';
   updateTicker();
 }
 
-// ── TOTAL WEIGHT TICKER ────────────────────────────────────────────
-function updateTicker() {
-  let total = 0;
-  let anyWeight = false;
-  document.querySelectorAll('[id^="wt-"]').forEach(el => {
-    const txt = el.textContent.replace(/[^0-9.]/g,'');
-    const n   = parseFloat(txt);
-    if (!isNaN(n) && n > 0) { total += n; anyWeight = true; }
+function updateTicker(){
+  let total=0,any=false;
+  document.querySelectorAll('[id^="wt-"]').forEach(el=>{
+    const n=parseFloat(el.textContent.replace(/[^0-9.]/g,''));
+    if(!isNaN(n)&&n>0){total+=n;any=true;}
   });
-  const ticker = document.getElementById('ticker');
-  const span   = document.getElementById('total-weight');
-  if (anyWeight) {
-    span.textContent = `${fmt(total)} lbs`;
-    ticker.classList.add('has-weight');
-  } else {
-    span.textContent = '—';
-    ticker.classList.remove('has-weight');
-  }
+  document.getElementById('total-weight').textContent = any?`${fmt(total)} lbs`:'—';
+  document.getElementById('ticker').classList.toggle('has-weight',any);
 }
 
-// ── BUILD REVIEW ───────────────────────────────────────────────────
-function buildReview() {
-  const area = document.getElementById('review-area');
-  const items = collectItems();
-  if (!items.length) {
-    area.innerHTML = '<p class="review-empty">No line items added yet. Fill in Step 02 and refresh.</p>';
-    return;
-  }
+// ── FILE HANDLERS ──────────────────────────────────────────────────
+function onLineFiles(id,input){
+  const chips = document.getElementById(`att-chips-${id}`);
+  Array.from(input.files).forEach(file=>{
+    const fo={name:file.name,size:sizeFmt(file.size),cls:classOf(file.name)};
+    fileStore[id].push(fo);
+    const idx=fileStore[id].length-1;
+    chips.appendChild(makeChip(fo,()=>fileStore[id].splice(idx,1)));
+  });
+  input.value='';
+}
+function onGlobalFiles(input){
+  const chips=document.getElementById('global-chips');
+  Array.from(input.files).forEach(file=>{
+    const fo={name:file.name,size:sizeFmt(file.size),cls:classOf(file.name)};
+    globalFiles.push(fo);
+    const idx=globalFiles.length-1;
+    chips.appendChild(makeChip(fo,()=>globalFiles.splice(idx,1)));
+  });
+  input.value='';
+}
 
-  // Contact block
-  const co    = document.getElementById('c-company').value || '—';
-  const cname = document.getElementById('c-name').value    || '—';
-  const email = document.getElementById('c-email').value   || '—';
-  const phone = document.getElementById('c-phone').value   || '—';
-  const zip   = document.getElementById('c-zip').value     || '—';
-  const po    = document.getElementById('c-po').value      || '—';
-  const dateEl= document.getElementById('d-date').value;
-  const ddate = dateEl ? new Date(dateEl+'T00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—';
-  const deliv = document.querySelector('input[name="delivery"]:checked')?.value || '—';
-  const addr  = document.getElementById('d-addr').value    || '—';
-  const reqs  = collectReqs();
-  const dnotes= document.getElementById('d-notes').value   || '';
+// ── COLLECT ────────────────────────────────────────────────────────
+function collectItems(){
+  const result=[];
+  document.querySelectorAll('.item-card').forEach(card=>{
+    const id=card.id.replace('item-','');
+    const key  =document.getElementById(`shape-${id}`)?.value;
+    const grade=document.getElementById(`grade-${id}`)?.value||'';
+    const qty  =parseFloat(document.getElementById(`qty-${id}`)?.value)||1;
+    const unit =document.getElementById(`unit-${id}`)?.value||'pcs';
+    const cut  =document.getElementById(`cut-${id}`)?.value||'';
+    const proc =document.getElementById(`proc-${id}`)?.value||'';
+    const notes=document.getElementById(`notes-${id}`)?.value.trim()||'';
+    const shape=SHAPES[key];
+    if(!shape) return;
+    const d={};const dimsArr=[];
+    shape.dims.forEach(dim=>{
+      const el=document.getElementById(`dim-${id}-${dim.id}`);
+      if(el){
+        const v=dim.id==='desc'?el.value:parseFloat(el.value)||0;
+        d[dim.id]=v;
+        if(v) dimsArr.push(`${dim.label}: ${v}${dim.unit?' '+dim.unit:''}`);
+      }
+    });
+    const lbs=shape.weight?shape.weight(d,qty):null;
+    result.push({id,shape:shape.label,grade,qty,unit,cut,proc,notes,
+      dimsStr:dimsArr.join(', ')||'—',
+      lbs:lbs&&lbs>0?lbs:null,
+      files:(fileStore[id]||[]).filter(f=>f.name)});
+  });
+  return result;
+}
 
-  let totalLbs = 0;
-  const rows = items.map((it, i) => {
-    if (it.lbs) totalLbs += it.lbs;
+function collectReqs(){
+  const r=[];
+  if(document.getElementById('req-cmtr')?.checked) r.push('CMTR/MTR');
+  if(document.getElementById('req-3pi')?.checked)  r.push('3rd-Party Inspection');
+  if(document.getElementById('req-pkg')?.checked)  r.push('Special Packaging');
+  if(document.getElementById('req-kit')?.checked)  r.push('Kitting');
+  if(document.getElementById('req-cad')?.checked)  r.push('CAD Drawing');
+  return r;
+}
+
+function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+
+// ── REVIEW ─────────────────────────────────────────────────────────
+function buildReview(){
+  const area=document.getElementById('review-area');
+  const items=collectItems();
+  if(!items.length){area.innerHTML='<p class="review-empty">No line items added yet.</p>';return;}
+
+  const co   =document.getElementById('c-company').value||'—';
+  const cname=document.getElementById('c-name').value||'—';
+  const email=document.getElementById('c-email').value||'—';
+  const phone=document.getElementById('c-phone').value||'—';
+  const zip  =document.getElementById('c-zip').value||'—';
+  const po   =document.getElementById('c-po').value||'—';
+  const dateEl=document.getElementById('d-date').value;
+  const ddate=dateEl?new Date(dateEl+'T00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'—';
+  const deliv=document.querySelector('input[name="delivery"]:checked')?.value||'—';
+  const addr =document.getElementById('d-addr').value||'—';
+  const reqs =collectReqs();
+  const dnotes=document.getElementById('d-notes').value||'';
+
+  let totalLbs=0;
+  const rows=items.map((it,i)=>{
+    if(it.lbs) totalLbs+=it.lbs;
+    const fileHtml=it.files.length
+      ?it.files.map(f=>`<div class="att-chip chip-${f.cls}" style="display:inline-flex;margin:2px 0;">`+
+          `<span class="chip-ext" style="font-size:.58rem;">${extOf(f.name).toUpperCase()}</span>`+
+          `<span style="margin-left:4px;font-size:.72rem;font-family:'Open Sans',sans-serif;">${f.name}</span></div>`).join('')
+      :'<span style="color:var(--text3);">—</span>';
     return `<tr>
       <td class="line-n">${i+1}</td>
-      <td><strong>${it.shape}</strong>${it.grade ? '<br><span style="color:var(--text2);font-size:0.78rem;">'+it.grade+'</span>' : ''}</td>
-      <td style="font-size:0.8rem;">${it.dimsStr}</td>
+      <td><strong>${it.shape}</strong>${it.grade?`<br><span style="color:var(--text2);font-size:.76rem;">${it.grade}</span>`:''}</td>
+      <td style="font-size:.78rem;">${it.dimsStr}</td>
       <td>${it.qty} ${it.unit}</td>
-      <td>${it.cut}</td>
-      <td class="wt-cell">${it.lbs ? fmt(it.lbs)+' lbs' : '—'}</td>
-      <td>${it.proc}</td>
-      <td style="font-size:0.78rem;color:var(--text2);">${it.notes || '—'}</td>
+      <td style="font-size:.78rem;">${it.cut}</td>
+      <td class="wt-cell">${it.lbs?`~${fmt(it.lbs)} lbs`:'—'}</td>
+      <td style="font-size:.78rem;">${it.proc}</td>
+      <td style="font-size:.76rem;">${fileHtml}</td>
+      <td style="font-size:.76rem;color:var(--text2);">${it.notes||'—'}</td>
     </tr>`;
   }).join('');
 
-  area.innerHTML = `
+  area.innerHTML=`
     <div class="review-meta">
       <strong>Company:</strong> ${co} &nbsp;|&nbsp; <strong>Contact:</strong> ${cname} &nbsp;|&nbsp; <strong>Email:</strong> ${email} &nbsp;|&nbsp; <strong>Phone:</strong> ${phone}<br>
-      <strong>Delivery ZIP:</strong> ${zip} &nbsp;|&nbsp; <strong>PO / Ref:</strong> ${po} &nbsp;|&nbsp; <strong>Need By:</strong> ${ddate} &nbsp;|&nbsp; <strong>Method:</strong> ${deliv}<br>
-      ${reqs.length ? '<strong>Special Req:</strong> '+reqs.join(', ')+'<br>' : ''}
-      ${dnotes ? '<strong>Notes:</strong> '+dnotes : ''}
+      <strong>ZIP:</strong> ${zip} &nbsp;|&nbsp; <strong>PO / Ref:</strong> ${po} &nbsp;|&nbsp; <strong>Need By:</strong> ${ddate} &nbsp;|&nbsp; <strong>Delivery:</strong> ${deliv}
+      ${reqs.length?`<br><strong>Special Req:</strong> ${reqs.join(', ')}`:''}
+      ${dnotes?`<br><strong>Notes:</strong> ${dnotes}`:''}
+      ${globalFiles.length?`<br><strong>Order-Level Files:</strong> ${globalFiles.map(f=>f.name).join(', ')}`:''}
     </div>
     <div style="overflow-x:auto;">
     <table class="review-table">
       <thead><tr>
         <th>#</th><th>Material / Grade</th><th>Dimensions</th>
-        <th>Qty</th><th>Cut</th><th>Est. Lbs</th><th>Processing</th><th>Notes</th>
+        <th>Qty</th><th>Cut</th><th>Est. Lbs</th><th>Processing</th><th>Files</th><th>Notes</th>
       </tr></thead>
       <tbody>${rows}</tbody>
       <tfoot>
         <tr class="total-row">
-          <td colspan="5" style="text-align:right;padding-right:16px;">TOTAL ESTIMATED WEIGHT</td>
-          <td class="wt-cell">${totalLbs ? fmt(totalLbs)+' lbs' : '—'}</td>
-          <td colspan="2">${items.length} line item${items.length!==1?'s':''}</td>
+          <td colspan="5" style="text-align:right;padding-right:16px;font-family:'Raleway',sans-serif;">TOTAL ESTIMATED WEIGHT</td>
+          <td class="wt-cell">${totalLbs?`~${fmt(totalLbs)} lbs`:'—'}</td>
+          <td colspan="3" style="font-family:'Open Sans',sans-serif;font-size:.82rem;">${items.length} line item${items.length!==1?'s':''}</td>
         </tr>
       </tfoot>
     </table>
     </div>`;
 }
 
-// ── COLLECT ITEMS ──────────────────────────────────────────────────
-function collectItems() {
-  const result = [];
-  document.querySelectorAll('.item-card').forEach(card => {
-    const id       = card.id.replace('item-','');
-    const shapeKey = document.getElementById(`shape-${id}`)?.value;
-    const grade    = document.getElementById(`grade-${id}`)?.value || '';
-    const qty      = parseFloat(document.getElementById(`qty-${id}`)?.value) || 1;
-    const unit     = document.getElementById(`unit-${id}`)?.value || 'pcs';
-    const cut      = document.getElementById(`cut-${id}`)?.value  || '';
-    const proc     = document.getElementById(`proc-${id}`)?.value || '';
-    const notes    = document.getElementById(`notes-${id}`)?.value.trim() || '';
-    const shape    = SHAPES[shapeKey];
-    if (!shape) return;
+// ── RFQ TEXT ───────────────────────────────────────────────────────
+function buildRFQText(){
+  const co   =document.getElementById('c-company').value||'—';
+  const cname=document.getElementById('c-name').value||'—';
+  const email=document.getElementById('c-email').value||'—';
+  const phone=document.getElementById('c-phone').value||'—';
+  const zip  =document.getElementById('c-zip').value||'—';
+  const po   =document.getElementById('c-po').value||'—';
+  const dateEl=document.getElementById('d-date').value;
+  const ddate=dateEl?new Date(dateEl+'T00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'Flexible';
+  const deliv=document.querySelector('input[name="delivery"]:checked')?.value||'—';
+  const addr =document.getElementById('d-addr').value||'—';
+  const reqs =collectReqs();
+  const dnotes=document.getElementById('d-notes').value||'None';
+  const items=collectItems();
+  let totalLbs=0;
 
-    const d = {};
-    let dimsArr = [];
-    shape.dims.forEach(dim => {
-      const el = document.getElementById(`dim-${id}-${dim.id}`);
-      if (el) {
-        const v = parseFloat(el.value) || 0;
-        d[dim.id] = v;
-        if (v) dimsArr.push(`${dim.label}: ${v}${dim.unit ? ' '+dim.unit : ''}`);
-      } else if (dim.id === 'desc') {
-        const el2 = document.getElementById(`dim-${id}-desc`);
-        if (el2) dimsArr.push(el2.value);
-      }
-    });
-
-    const lbs = shape.weight ? shape.weight(d, qty) : null;
-    result.push({
-      shape: shape.label, grade, qty, unit, cut, proc, notes,
-      dimsStr: dimsArr.join(', ') || '—',
-      lbs: lbs && lbs > 0 ? lbs : null
-    });
-  });
-  return result;
-}
-
-function collectReqs() {
-  const r = [];
-  if (document.getElementById('req-cmtr')?.checked) r.push('CMTR/MTR');
-  if (document.getElementById('req-3pi')?.checked)  r.push('3rd-Party Inspection');
-  if (document.getElementById('req-pkg')?.checked)  r.push('Special Packaging');
-  if (document.getElementById('req-kit')?.checked)  r.push('Kitting');
-  if (document.getElementById('req-cad')?.checked)  r.push('CAD Drawing');
-  return r;
-}
-
-// ── FORMAT NUMBER ──────────────────────────────────────────────────
-function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
-
-// ── SUBMIT ─────────────────────────────────────────────────────────
-function buildRFQText() {
-  const co    = document.getElementById('c-company').value || '—';
-  const cname = document.getElementById('c-name').value    || '—';
-  const email = document.getElementById('c-email').value   || '—';
-  const phone = document.getElementById('c-phone').value   || '—';
-  const zip   = document.getElementById('c-zip').value     || '—';
-  const po    = document.getElementById('c-po').value      || '—';
-  const dateEl= document.getElementById('d-date').value;
-  const ddate = dateEl ? new Date(dateEl+'T00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : 'Flexible';
-  const deliv = document.querySelector('input[name="delivery"]:checked')?.value || '—';
-  const addr  = document.getElementById('d-addr').value    || '—';
-  const reqs  = collectReqs();
-  const dnotes= document.getElementById('d-notes').value   || 'None';
-
-  const items  = collectItems();
-  let totalLbs = 0;
-
-  const lines = items.map((it, i) => {
-    if (it.lbs) totalLbs += it.lbs;
-    return `  ${i+1}. ${it.shape}${it.grade ? ' | '+it.grade : ''}
-     Dims:       ${it.dimsStr}
-     Qty:        ${it.qty} ${it.unit}
-     Cut:        ${it.cut}
-     Processing: ${it.proc}
-     Est. Lbs:   ${it.lbs ? fmt(it.lbs)+' lbs' : 'N/A'}
-     Notes:      ${it.notes || 'None'}`;
+  const lines=items.map((it,i)=>{
+    if(it.lbs) totalLbs+=it.lbs;
+    const fileLines=it.files.length
+      ?it.files.map(f=>`       [${extOf(f.name).toUpperCase().padEnd(4)}] ${f.name}  (${f.size})`).join('\n')
+      :'       None';
+    return `  ${i+1}. ${it.shape}${it.grade?' | '+it.grade:''}\n     Dims:       ${it.dimsStr}\n     Qty:        ${it.qty} ${it.unit}\n     Cut:        ${it.cut}\n     Processing: ${it.proc}\n     Est. Lbs:   ${it.lbs?fmt(it.lbs)+' lbs':'N/A'}\n     Notes:      ${it.notes||'None'}\n     Files:\n${fileLines}`;
   }).join('\n\n');
 
-  return `REQUEST FOR QUOTE — GUARDIAN METALS, LLC
-${'═'.repeat(52)}
+  const allAttach=[];
+  items.forEach((it,i)=>it.files.forEach(f=>allAttach.push({f,context:`Line ${i+1} — ${it.shape}`})));
+  globalFiles.forEach(f=>allAttach.push({f,context:'Order-Level'}));
 
-SUBMITTED: ${new Date().toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})}
+  let attachBlock='';
+  if(allAttach.length){
+    const byCtx={};
+    allAttach.forEach(({f,context})=>{if(!byCtx[context])byCtx[context]=[];byCtx[context].push(f);});
+    const sections=Object.entries(byCtx).map(([ctx,files])=>
+      `  ${ctx}:\n`+files.map(f=>`    [${extOf(f.name).toUpperCase().padEnd(4)}] ${f.name}  (${f.size})`).join('\n')
+    ).join('\n\n');
+    attachBlock=`\n${'═'.repeat(52)}\nATTACHMENTS — ${allAttach.length} file${allAttach.length!==1?'s':''} to attach\n\n${sections}\n\n⚠  ATTACH ALL ${allAttach.length} FILE${allAttach.length!==1?'S':''} BEFORE HITTING SEND\n${'═'.repeat(52)}`;
+  }
 
-CUSTOMER INFORMATION
-  Company:       ${co}
-  Contact:       ${cname}
-  Email:         ${email}
-  Phone:         ${phone}
-  Delivery ZIP:  ${zip}
-  PO / Ref:      ${po}
-
-DELIVERY & REQUIREMENTS
-  Method:        ${deliv}
-  Need By:       ${ddate}
-  Ship To:       ${addr}
-  Special Req:   ${reqs.length ? reqs.join(', ') : 'None'}
-  Notes:         ${dnotes}
-
-MATERIAL REQUIREMENTS (${items.length} line item${items.length!==1?'s':''})
-${'─'.repeat(52)}
-${lines}
-
-${'─'.repeat(52)}
-TOTAL ESTIMATED WEIGHT: ${totalLbs ? fmt(totalLbs)+' lbs' : 'N/A'}
-${'═'.repeat(52)}
-
-Please reply to ${email} with pricing and availability.
-Thank you for the quick turnaround — Guardian Metals!`;
+  return `REQUEST FOR QUOTE — GUARDIAN METALS, LLC\n${'═'.repeat(52)}\n\nSUBMITTED:  ${new Date().toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})}\n\nCUSTOMER INFORMATION\n  Company:       ${co}\n  Contact:       ${cname}\n  Email:         ${email}\n  Phone:         ${phone}\n  Delivery ZIP:  ${zip}\n  PO / Ref:      ${po}\n\nDELIVERY & REQUIREMENTS\n  Method:        ${deliv}\n  Need By:       ${ddate}\n  Ship To:       ${addr}\n  Special Req:   ${reqs.length?reqs.join(', '):'None'}\n  Notes:         ${dnotes}\n\nMATERIAL REQUIREMENTS (${items.length} line item${items.length!==1?'s':''})\n${'─'.repeat(52)}\n${lines}\n\n${'─'.repeat(52)}\nTOTAL ESTIMATED WEIGHT: ${totalLbs?fmt(totalLbs)+' lbs':'N/A'}\n${'═'.repeat(52)}\n\nPlease reply to ${email} with pricing and availability.\nThank you — Guardian Metals!${attachBlock}`;
 }
 
-function submitRFQ() {
-  const email = document.getElementById('c-email').value;
-  const co    = document.getElementById('c-company').value;
-  if (!email || !co) { alert('Please fill in at least Company Name and Email in Step 01 before submitting.'); return; }
-  if (!document.querySelectorAll('.item-card').length) { alert('Please add at least one line item in Step 02.'); return; }
+// ── SUBMIT ─────────────────────────────────────────────────────────
+function submitRFQ(){
+  const email=document.getElementById('c-email').value;
+  const co   =document.getElementById('c-company').value;
+  if(!email||!co){alert('Please fill in Company Name and Email in Step 01.');return;}
+  if(!document.querySelectorAll('.item-card').length){alert('Please add at least one line item in Step 02.');return;}
 
   buildReview();
-  const body    = buildRFQText();
-  const subject = `RFQ — ${co} — ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
-  const mailto  = `mailto:sales@guardian-metals.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.open(mailto, '_blank');
-  document.getElementById('success').style.display = 'block';
-  document.getElementById('success').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  const body   =buildRFQText();
+  const subject=`RFQ — ${co} — ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
+  window.open(`mailto:sales@guardian-metals.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+
+  const items=collectItems();
+  const allAttach=[];
+  items.forEach((it,i)=>it.files.forEach(f=>allAttach.push({f,context:`Line ${i+1}`})));
+  globalFiles.forEach(f=>allAttach.push({f,context:'Order-Level'}));
+
+  const reminder  =document.getElementById('attach-reminder');
+  const attachList=document.getElementById('attach-list');
+  if(allAttach.length){
+    attachList.innerHTML=allAttach.map(({f,context})=>
+      `<div class="attach-line"><span class="al-ext chip-${f.cls}">${extOf(f.name).toUpperCase()}</span><strong>${f.name}</strong><span style="color:var(--text2);">(${f.size})</span><span class="al-context">— ${context}</span></div>`
+    ).join('');
+    reminder.style.display='block';
+  } else {
+    reminder.style.display='none';
+  }
+  document.getElementById('success').style.display='block';
+  document.getElementById('success').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function copyRFQ() {
-  const co = document.getElementById('c-company').value;
-  if (!co) { alert('Fill in at least your Company Name first.'); return; }
-  const text = buildRFQText();
-  navigator.clipboard.writeText(text).then(() => {
-    alert('RFQ text copied to clipboard! Paste it into an email to sales@guardian-metals.com.');
-  }).catch(() => {
-    // Fallback
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta);
-    ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-    alert('RFQ text copied to clipboard!');
-  });
+function copyRFQ(){
+  const co=document.getElementById('c-company').value;
+  if(!co){alert('Fill in your Company Name first.');return;}
+  const text=buildRFQText();
+  navigator.clipboard.writeText(text)
+    .then(()=>alert('RFQ text copied! Paste into an email to sales@guardian-metals.com.'))
+    .catch(()=>{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);alert('RFQ text copied!');});
 }
 
-// ── INIT: start with one item ──────────────────────────────────────
 addItem();
 </script>
 </body>
